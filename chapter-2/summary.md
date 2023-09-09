@@ -24,8 +24,7 @@ const bigNum:bigint = 2000000000000000000n;
 let은 값이 재할당될 것으로 전제하는 식별자다. 그래서 타입을 넓게 추론한다.
 
 ```
-// 옆에 달린 주석들은 타입스크립트가 추론한 해당 식별자의 타입이다
-
+//? const는 타입 추론을 구체적으로, let은 느슨하게 한다.
 let k1 = null; // any
 const k2 = null; // null
 
@@ -35,18 +34,16 @@ const v2 = undefined; // undefined
 let hello1 = "hello"; // string
 const hello2 = "hello"; // "hello"
 
-let sym1 = Symbol.for("현"); // symbol
-const sym2 = Symbol.for("현"); // typeof sym2
-const sym3 = Symbol.for("현");
+let sym1 = Symbol("현"); // symbol
+const sym2: unique symbol = Symbol("현"); // typeof sym2
+const sym3 = Symbol("현");
 
-// @ts-expect-error
-console.log(sym2 === sym3); // 주석을 지우면 에러 발생함
-
+const any: {} = {}; // nullish를 제외한 모든 타입
 ```
 
-# 2.3 const의 타입 추론은 원시 타입에서만 정확하다
+# 2.3 const의 타입 추론은 원시 타입만 정확하다
 
-원시 타입에 한해서라면 const의 타입 추론은 정확하다. 다만 JS는 대부분이 객체다.  
+const의 원시 타입 추론은 정확하다. 그러나 JS는 대부분이 객체다.  
 객체는 재할당 없이 내부 값을 바꿀 수 있다. 그래서 객체 타입 추론은 느슨하다.
 
 ```
@@ -66,9 +63,8 @@ const user2 = {
 const nums = [3, 1, 2, 5, 4] as const;
 // nums.sort(nums); 에러 발생
 
-//! readonly로 추론하더라도 any로서 받아들이면 수정할 수 있다.
-//! 함수를 실행했을 뿐인데 발생하는 side effect
-//@ 따라서 함수에서도 typing을 정확히 해야 좋음.
+//! nums는 readonly로서 추론되지만 함수가 이를 any로 받겠다고 하면 수정할 수 있다.
+//@ 이런 side effect를 피하기 위해서라도 함수에서 typing을 정확히 하자.
 function sortFunc(nums: any) {
   nums.sort();
 }
@@ -76,13 +72,12 @@ function sortFunc(nums: any) {
 sortFunc(nums);
 console.log(nums); // [1, 2, 3, 4, 5]
 
-//@ typing과 같이 쓰면 좋을 ES2023 메소드
+//@ typing과 같이 쓰면 좋은 것들: ES2023에 추가된 메소드
 //? 인자를 안 바꾸고 새로운 배열을 반환한다는 점에서 함수형 프로그래밍과 궁합이 좋음
 const nums1 = [3, 1, 2, 5, 4];
-const nums2 = nums1.toSorted(); // 새 배열 [1, 2, 3, 4, 5] 반환
-const nums3 = nums1.with(2, 10).with(4, 20); // 새 배열 [3, 1, 10, 5, 20] 반환
-const nums4 = nums1.toSpliced(1, 3); // 새 배열 [3, 4] 반환
-const nums5 = nums1.toSpliced(1, 3, 6, 7, 8); // 새 배열 [3, 4, 6, 7, 8] 반환
+const nums2 = nums1.toSorted(); // 새 배열 [1,2,3,4,5] 반환
+const nums3 = nums1.with(2, 10).with(4, 20); // 새 배열 [3,1,10,5,20] 반환
+const nums4 = nums1.toSpliced(1, 3, 6, 7, 8); // 새 배열 [3,4,6,7,8] 반환
 ```
 
 ### JS -> TS로 바꿀 때
@@ -90,3 +85,36 @@ const nums5 = nums1.toSpliced(1, 3, 6, 7, 8); // 새 배열 [3, 4, 6, 7, 8] 반�
 잘 실행되던 코드가 타입을 입력했더니 에러가 나는 경우는 흔하다.
 임시방편으로 에러 코드 위에 // @ts-expect-error 주석을 달면 된다.
 최종적으론 주석 없이 마이그레이션을 마치도록 한다.
+
+### Symbol에 대해
+
+Symbol은 객체의 unique한 key로 쓰는 타입이다.
+
+```
+//@ 심볼은 block level 단위로 중복이 있는지 체크한다.
+//@ 다른 파일에서 author라는 심볼을 만들면 에러가 난다.
+const author = Symbol("저자의 이름");
+
+interface Person {
+  [author]: string;
+  author: string;
+}
+
+class Person implements Person {
+  [author]: string;
+  author: string;
+  //! 매개변수 이름이 심볼 이름과 겹치면 Error.
+  constructor(symbolAuthor: string, realAuthor: string) {
+    this[author] = symbolAuthor;
+    this.author = realAuthor;
+  }
+
+  print() {
+    console.log(`저자의 심볼: ${this[author]}`);
+    console.log(`저자의 이름: ${this.author}`);
+  }
+}
+
+const zeroCho = new Person("제로초", "조현영");
+zeroCho.print();
+```

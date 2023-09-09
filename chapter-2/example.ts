@@ -10,9 +10,9 @@ const v2 = undefined; // undefined
 let hello1 = "hello"; // string
 const hello2 = "hello"; // "hello"
 
-let sym1 = Symbol.for("현"); // symbol
-const sym2 = Symbol.for("현"); // typeof sym2
-const sym3 = Symbol.for("현");
+let sym1 = Symbol("현"); // symbol
+const sym2: unique symbol = Symbol("현"); // typeof sym2
+const sym3 = Symbol("현");
 
 const any: {} = {}; // nullish를 제외한 모든 타입
 
@@ -36,7 +36,7 @@ const user2 = {
 const nums = [3, 1, 2, 5, 4] as const;
 // nums.sort(nums); 에러 발생
 
-//! readonly로 추론하더라도 any로서 받으면 함수 내에서 수정할 수 있다.
+//! nums는 readonly로서 추론되지만 함수가 이를 any로 받겠다고 하면 수정할 수 있다.
 //@ 이런 side effect를 피하기 위해서라도 함수에서 typing을 정확히 하자.
 function sortFunc(nums: any) {
   nums.sort();
