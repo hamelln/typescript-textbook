@@ -1,13 +1,14 @@
-//@ 심볼은 block level 단위로 중복이 있는지 체크한다.
-//@ 다른 파일에서 author라는 심볼을 만들면 에러가 난다.
-const author = Symbol("저자의 이름");
+//@ Symbol(description: string): symbol. 즉시 생성 후 반환. 지역적
+//@ Symbol.for(key: string): symbol. 심볼 레지스트리에 있으면 반환, 없을 땐 생성. 전역적.
+//@ 이 author는 example.ts에서 선언된 author 심볼을 참조한다.
+const author = Symbol.for("author");
 
-interface Person {
+interface PersonConstructor {
   [author]: string;
   author: string;
 }
 
-class Person implements Person {
+class Person implements PersonConstructor {
   [author]: string;
   author: string;
   //! 매개변수 이름이 심볼 이름과 겹치면 Error.

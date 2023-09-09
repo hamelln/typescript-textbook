@@ -1,4 +1,6 @@
-// 옆에 달린 주석들은 타입스크립트가 추론한 해당 식별자의 타입이다
+//@ 옆에 달린 주석들은 타입스크립트가 추론한 해당 식별자의 타입이다
+
+const author = Symbol.for("author");
 
 //? const는 타입 추론을 구체적으로, let은 느슨하게 한다.
 let k1 = null; // any
@@ -20,8 +22,8 @@ const any: {} = {}; // nullish를 제외한 모든 타입
 // @ts-expect-error
 console.log(sym2 === sym3);
 
-//? const라 해도 함수, 객체, 배열, 클래스 등의 '객체'는 타입 추론이 let과 흡사하게 느슨하다.
-//? 객체는 가변성이라 재할당 없이 property값을 수정 가능하기에 정확히 추론하면 에러가 빈번할 듯.
+//? const라 해도 함수, 객체, 배열, 클래스 등의 '객체'는 let처럼 추론한다.
+//? 객체는 가변적이고 재할당 없이 property를 수정 가능해서 정확히 추론하기 조심스러울 듯.
 const user1 = {
   name: "John", // name: string
   age: 30, // age: number
@@ -34,10 +36,9 @@ const user2 = {
 } as const; // readonly로 추론
 
 const nums = [3, 1, 2, 5, 4] as const;
-// nums.sort(nums); 에러 발생
+//! nums.sort(nums); 에러 발생
 
-//! nums는 readonly로서 추론되지만 함수가 이를 any로 받겠다고 하면 수정할 수 있다.
-//@ 이런 side effect를 피하기 위해서라도 함수에서 typing을 정확히 하자.
+//! nums는 readonly로 추론되지만 함수가 any로 받으면 원본 객체 변경 가능
 function sortFunc(nums: any) {
   nums.sort();
 }
@@ -46,7 +47,7 @@ sortFunc(nums);
 console.log(nums); // [1, 2, 3, 4, 5]
 
 //@ typing과 같이 쓰면 좋은 것들: ES2023에 추가된 메소드
-//? 인자를 안 바꾸고 새로운 배열을 반환한다는 점에서 함수형 프로그래밍과 궁합이 좋음
+//? 원본을 안 바꾸고 새 객체를 반환해서 함수형 프로그래밍에 적합
 const nums1 = [3, 1, 2, 5, 4];
 const nums2 = nums1.toSorted(); // 새 배열 [1,2,3,4,5] 반환
 const nums3 = nums1.with(2, 10).with(4, 20); // 새 배열 [3,1,10,5,20] 반환
