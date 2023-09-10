@@ -274,4 +274,49 @@ if (result.success) {
 ### void
 뭔가를 반환하지 않고 실행만 하는 함수 타입을 가리킨다.  
 
+```
+const func = (): void => {
+  return 1; // 에러
+}
 
+const func2: () => void = () => {
+  return 1; // 에러가 안 남
+}
+```
+
+return하면 안 되는 함수를 작성할 땐 위와 같이 작성한다.
+
+### {}
+nullish가 아닌 모든 타입을 가리킨다.  
+그러나 어떤 값을 할당해도 속성을 조회하거나 연산자를 쓸 수는 없다.  
+왜냐하면 이 타입은 표현 그대로 '빈 객체'를 가리키는 타입이라 그렇다.  
+직접 사용할 일은 없겠지만 개발하다보면 {} 타입이 추론되는 경우도 있을 테니 알아만 두자.  
+
+### never
+'절대 일어나지 않을 케이스'에 대해 쓰는 타입이다.
+주로 switch문이 완벽한지 확인하기 위해 사용한다.
+```
+enum Flower {
+  Rose,
+  Rhododendron,
+  Violet,
+  Daisy,
+  Tulip
+}
+
+const flowerLatinName = (flower: Flower) => {
+  switch (flower) {
+    case Flower.Rose:
+      return "Rosa rubiginosa";
+    case Flower.Rhododendron:
+      return "Rhododendron ferrugineum";
+    case Flower.Violet:
+      return "Viola reichenbachiana";
+    case Flower.Daisy:
+      return "Bellis perennis";
+    default:
+      const _exhaustiveCheck: never = flower; // Tulip 케이스에 대한 처리가 없어서 에러 발생. 
+      return _exhaustiveCheck;
+  }
+};
+```
