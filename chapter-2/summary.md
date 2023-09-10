@@ -57,15 +57,6 @@ const user2 = {
 const nums = [3, 1, 2, 5, 4] as const;
 nums.sort(nums); // 에러 발생
 
-// nums는 readonly로 다뤄지지만 함수가 이를 any로 받겠다고 하면 수정할 수 있다.
-// 이런 side effect를 피하기 위해 함수에서 typing을 정확히 하고 any를 지양한다.
-function sortFunc(nums: any) {
-  nums.sort();
-}
-
-sortFunc(nums);
-console.log(nums); // [1, 2, 3, 4, 5]
-
 // typing과 같이 쓰면 좋은 것들: ES2023에 추가된 메소드
 // 인자를 안 바꾸고 새로운 배열을 반환한다는 점에서 함수형 프로그래밍과 궁합이 좋다.
 const nums1 = [3, 1, 2, 5, 4];
@@ -197,7 +188,19 @@ satisfies는 TypeScript 4.9에 도입된 기능으로 타입 체크용으로 쓴
 
 ### any
 만악의 근원. 쓰지 말아야 할 1순위 타입.
-2.3의 예시에서 봤듯, as const로 처리한 배열도 멋대로 고칠 수 있다. 더 최악을 보자.
+any를 쓰면 TypeScript를 쓰는 의미가 없어지는 수준이라 봐도 좋다.
+```
+const nums = [3, 1, 2, 5, 4] as const;
+
+// nums 배열은 readonly로 다뤄지지만 함수가 이를 any로 받으면 수정이 된다.
+function sortFunc(nums: any) {
+  nums.sort();
+}
+
+sortFunc(nums);
+console.log(nums); // [1, 2, 3, 4, 5]
+```
+
 ```
 type Person = {
   readonly name: string;
@@ -207,6 +210,7 @@ const person: Person = {
   name: "태현",
 };
 
+// 객체도 얄짤없다.
 function hell(person: any) {
   person.name = "hahaha";
 }
