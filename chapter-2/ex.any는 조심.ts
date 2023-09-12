@@ -10,8 +10,10 @@ sortFunc(nums);
 console.log(nums); // [1, 2, 3, 4, 5]
 
 //# 예제 2: any는 객체도 변경 가능
-type Person = { readonly name: string };
-const person: Person = { name: "태현" };
+class Person {
+  readonly name = "태현";
+}
+const person = new Person();
 
 function hell(person: any) {
   person.name = "hahaha";
