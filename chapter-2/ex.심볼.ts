@@ -1,6 +1,5 @@
-//@ Symbol(description: string): symbol. 즉시 생성 후 반환. 지역적
-//@ Symbol.for(key: string): symbol. 심볼 레지스트리에 있으면 반환, 없을 땐 생성. 전역적.
-//@ 이 author는 example.ts에서 선언된 author 심볼을 참조한다.
+//# Symbol(description: string): symbol. 즉시 생성 후 반환. 지역적
+//# Symbol.for(key: string): symbol. 심볼 레지스트리에 있으면 반환, 없을 땐 생성. 전역적.
 const author = Symbol.for("author");
 
 interface PersonConstructor {
@@ -24,4 +23,4 @@ class Person implements PersonConstructor {
 }
 
 const zeroCho = new Person("제로초", "조현영");
-zeroCho.print();
+zeroCho.print(); // 저자의 심볼: 제로초, 저자의 이름: 조현영
