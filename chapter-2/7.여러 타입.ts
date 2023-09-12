@@ -3,13 +3,13 @@ const emptyObject: {} = 1;
 emptyObject.name = "name"; // 에러
 
 //# void: '명시적인 반환'이 없는 함수의 '반환 타입'
-//? 모든 함수는 return 문이 없을 땐 자동으로 undefined를 반환한다.
-const voidFunc1 = (): void => {}; // return값: undefined
+//@ 모든 함수는 return 문이 없을 땐 자동으로 undefined를 반환한다.
+const voidFunc = (): void => {};
 
-//@ 따라서 undefined를 반환해도 에러는 안 난다. 그러나 이렇게 할 이유는 없다.
+//! 따라서 undefined를 반환해도 에러는 안 난다. 그러나 이렇게 사용 X.
 const badVoidFunc1 = (): void => undefined;
 
-//@ 아래와 같이 작성하면 명시적인 return이 가능하지만 이것도 나쁜 짓이니 사용 X.
+//! 아래와 같이 작성하면 명시적인 return이 가능하지만 이것도 나쁜 짓이니 사용 X.
 const badVoidFunc2: () => void = () => 2;
 
 //# never: 절대 실행될 수 없는 타입.
@@ -54,7 +54,7 @@ function tryDeserializeLocalStorageItem(key: string): Result {
   return { success: true, value };
 }
 
-const result = tryDeserializeLocalStorageItem("dark_mode"); // Result 타입 추론.
+const result = tryDeserializeLocalStorageItem("dark_mode");
 //@ unknown은 무슨 타입인지 확실히 지정하면 사용할 수 있다.
 if (result.success) {
   const darkModeEnabled: unknown = result.value;
