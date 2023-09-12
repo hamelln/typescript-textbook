@@ -2,15 +2,18 @@
 const emptyObject: {} = 1;
 emptyObject.name = "name"; // 에러
 
-//# void: 반환이 없는 함수 타입.
-//@ 이 함수가 뭔가를 return한다면 그건 void 타입이다: 말이 안 되므로 에러.
-const badVoidFunc1 = (): void => 1;
+//# void: '명시적인 반환'이 없는 함수의 '반환 타입'
+//? 모든 함수는 return 문이 없을 땐 자동으로 undefined를 반환한다.
+const voidFunc1 = (): void => {}; // return값: undefined
 
-//@ 이 함수는 void 함수이다.(하지만 return을 막진 않는다. 그래도 굳이 하진 말자.)
+//@ 따라서 undefined를 반환해도 에러는 안 난다. 그러나 이렇게 할 이유는 없다.
+const badVoidFunc1 = (): void => undefined;
+
+//@ 아래와 같이 작성하면 명시적인 return이 가능하지만 이것도 나쁜 짓이니 사용 X.
 const badVoidFunc2: () => void = () => 2;
 
 //# never: 절대 실행될 수 없는 타입.
-//@ switch의 완벽성을 보장하는 등의 용도로 쓴다.
+//@ switch의 완벽성을 보장하는 용도 등으로 쓴다.
 enum Flower {
   Rose,
   Daisy,
@@ -30,7 +33,7 @@ const flowerLatinName = (flower: Flower) => {
   }
 };
 
-//# unknown: any는 "무슨 타입이든 허용", unknown은 "무슨 타입이 올 지 모르겠음"
+//# unknown: "무슨 타입인지 아직 모른다."
 type Result =
   | { success: true; value: unknown }
   | { success: false; error: Error };
@@ -38,37 +41,24 @@ type Result =
 function tryDeserializeLocalStorageItem(key: string): Result {
   const item = localStorage.getItem(key);
   if (item === null) {
-    return {
-      success: false,
-      error: new Error(`"${key}"에 맞는 아이템이 없습니다.`),
-    };
+    return { success: false, error: new Error(`"${key}"를 못 찾음`) };
   }
 
   let value: unknown;
   try {
     value = JSON.parse(item);
   } catch (error) {
-    return {
-      success: false,
-      error: new Error(`JSON 평가가 실패했습니다.`),
-    };
+    return { success: false, error: new Error(`JSON 평가 실패`) };
   }
 
-  return {
-    success: true,
-    value,
-  };
+  return { success: true, value };
 }
 
-const result = tryDeserializeLocalStorageItem("dark_mode"); //# Result 타입 추론.
-//@ unknown 타입은 유니온처럼 케이스를 좁혀나가며 사용한다.
+const result = tryDeserializeLocalStorageItem("dark_mode"); // Result 타입 추론.
+//@ unknown은 무슨 타입인지 확실히 지정하면 사용할 수 있다.
 if (result.success) {
-  //? Result 타입에서 result.success가 true일 땐 value 속성이 존재.
   const darkModeEnabled: unknown = result.value;
-
-  //? 속성 타입이 boolean인지 검사하고, 해당될 때에만 적용
   if (typeof darkModeEnabled === "boolean") {
-    console.log("Dark mode enabled: " + darkModeEnabled);
   }
 } else {
   //? Result 타입에서 success: false일 땐 error 속성이 존재

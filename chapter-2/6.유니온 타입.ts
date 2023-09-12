@@ -15,16 +15,16 @@ export type FormEvent =
   | ChangeEvent<HTMLTextAreaElement>;
 
 const handleFormData = (e: FormEvent) => {
-  //? 키의 유무 확인
+  //? 키의 유무 체크
   if ("name" in e.target && "value" in e.target) {
-    //! 가급적 e.target.name!, e.target.name as string 등으로 단정하는 건 자제.
+    //! as string, !으로 타입 단정하는 건 자제.
     const key = e.target.name;
     const value = e.target.value;
-    //? 타입 확인
+    //? 타입 체크
     if (typeof key === "string" && typeof value === "string") {
       switch (key) {
         case "breweryDescription":
-          //? 인스턴스 확인: 통과하면 textarea 객체의 속성, 메소드를 참조할 수 있다.
+          //? 인스턴스 체크: 통과하면 textarea 객체의 속성, 메소드 참조 가능.
           if (e.target instanceof HTMLTextAreaElement) {
           }
       }
