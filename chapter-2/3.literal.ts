@@ -1,10 +1,4 @@
-//@ 함수, 객체, 배열, 클래스 등의 '객체'는 let처럼 느슨하게 추론한다.
-const user1 = {
-  name: "John", // name: string
-  age: 30, // age: number
-};
-
-//@ 속성을 고정하고 싶으면 as const 접미사를 붙인다.
+//@ 객체 속성을 리터럴 타입으로 고정하고 싶으면 as const 접미사를 붙인다.
 const user2 = {
   name: "John", // name: "John"
   age: 30, // age: 30

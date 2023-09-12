@@ -2,11 +2,11 @@
 const nums = [3, 1, 2, 5, 4] as const;
 
 //! nums는 readonly로 추론되지만 함수가 any로 받으면 원본 객체 변경 가능
-function sortFunc(nums: any) {
+function hellSort(nums: any) {
   nums.sort();
 }
 
-sortFunc(nums);
+hellSort(nums);
 console.log(nums); // [1, 2, 3, 4, 5]
 
 //# 예제 2: any는 객체도 변경 가능
@@ -29,7 +29,7 @@ const anonymization = (data: User): User => data;
 
 const fetchData = async () => {
   const uri = "";
-  const httpOptions = {};
+  const httpOptions: RequestInit = {};
 
   //# fetch API는 어떤 타입의 데이터가 올 지 모르므로 any로 추론.
   const randomData = await fetch(uri, httpOptions).then((res) => res.json());
