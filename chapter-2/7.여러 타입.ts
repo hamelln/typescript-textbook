@@ -33,6 +33,16 @@ const flowerLatinName = (flower: Flower) => {
   }
 };
 
+//@ 에러를 던지는 코드와 무한 실행 코드도 비슷한 원리다.
+//? 절대로 뭔가를 return할 일이 없음. 그러므로 반환 타입이 never
+function throwError(errorMsg: string): never {
+  throw new Error(errorMsg);
+}
+
+function keepProcessing(): never {
+  while (true) {}
+}
+
 //# unknown: "무슨 타입인지 아직 모른다."
 type Result =
   | { success: true; value: unknown }
