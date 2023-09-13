@@ -136,3 +136,11 @@ class Person implements Person {
 const zeroCho = new Person("제로초", "조현영");
 zeroCho.print();
 ```
+
+# 참조
+- 조현영(2023.08). **타입스크립트 교과서.** 길벗
+- [Jesse Hallett(2023.05). When to use never and unknown in TypeScript](https://blog.logrocket.com/when-to-use-never-unknown-typescript/)
+- [Marius Schulz(2019.05). The unknown Type in TypeScript](https://mariusschulz.com/blog/the-unknown-type-in-typescript)
+- [박서진(2021.05). Template Literal Types로 타입 안전하게 코딩하기.](https://toss.tech/article/template-literal-types)
+- [멍개(2022.07). [typescript] 트리쉐이킹 - enum을 써야하는가?](https://blog.naver.com/pjt3591oo/222817775732)
+- [TypeScript 공식](https://www.typescriptlang.org/)
