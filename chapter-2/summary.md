@@ -50,16 +50,14 @@ any를 쓰면 TypeScript를 쓰는 의미가 없어지는 수준이라 봐도 �
 ### unknown
 
 any: "뭔지 몰라도 일단 다 OK."  
-unknown: "일단 담아오긴 했는데 이게 뭔 타입인지는 네가 알아내봐."  
-
-![](https://user-images.githubusercontent.com/39308313/267523947-0dcff004-2de0-44ed-9002-53a160f82bd3.png)
-
-any와 unknown을 시각적으로 비유해보자면 아래와 같이 생각한다.
+unknown: "일단 담아오긴 했는데 이걸 쓰려면 무슨 타입인지 네가 밝혀줘야 해."  
 
 ![](https://user-images.githubusercontent.com/39308313/267523865-5c8f4365-f293-4170-a66f-daa6b4cd7a2e.png)
 
 - any는 무슨 타입이든 할당되고, 무슨 타입인지 몰라도 일단 사용할 수 있다.
 - unknown은 무슨 타입이든 할당되지만, 어떤 타입인지 밝혀내기 전까지는 사용할 수 없다.
+
+![](https://user-images.githubusercontent.com/39308313/267523947-0dcff004-2de0-44ed-9002-53a160f82bd3.png)
 
 ### void
 
