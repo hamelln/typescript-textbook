@@ -18,7 +18,7 @@ const의 원시 타입 추론은 대체로 정확하다. 그러나 JS는 대부�
 
 ![](https://user-images.githubusercontent.com/39308313/267523923-028d091a-7f39-477c-bd3e-693d94714680.png)
 
-> 즉, 타입 명시는 "타입 추론이 부정확할 때" 해보자. 그렇게 써보다가 유연하게 기준을 바꾸자.  
+**즉, 타입 명시는 일단 "타입 추론이 부정확할 때" 해보자. 그러다가 필요에 따라 바꾸면 된다.**  
 
 # 3. 배열과 튜플
 
@@ -29,10 +29,10 @@ const의 원시 타입 추론은 대체로 정확하다. 그러나 JS는 대부�
 
 # 4. 유니온 타입
 
-유니온 타입은 식별자를 몇 가지 타입으로 특정할 수 있을 때 쓴다.  
-대부분은 enum 대신 유니온 타입으로 해결할 수 있다.  
-위와 같은 케이스를 전부 enum으로 지정하면 코드가 길어질 뿐더러 성능에도 조금 별로다(tree-shaking)  
-유니온 타입은 명료하고 간단한 케이스 뿐 아니라 여러 경우에 쓴다.  
+유니온 타입은 타입을 몇 가지로만 특정할 때 쓴다.  
+유니온과 제네릭은 타입스크립트의 꽃이란 찬사를 들을 만큼 강력한 기능이다.  
+예를 들어 타입을 몇 가지로 지정하는 방법은 enum도 있지만, enum은 tree-shaking에 영향을 받지 않는다.  
+따라서 ‘enum이어야만 할 이유’가 없다면 대부분은 유니온 타입으로 해결할 수 있다.  
 
 ![](https://user-images.githubusercontent.com/39308313/267523940-911febfc-4149-4c14-b573-162e8442e4ef.png)
 
@@ -54,20 +54,20 @@ unknown: "무슨 값이 올 지 미리 장담할 수가 없어"
 
 ![](https://user-images.githubusercontent.com/39308313/267523947-0dcff004-2de0-44ed-9002-53a160f82bd3.png)
 
+any와 unknown을 시각적으로 비유해보자면 나는 아래와 같이 생각한다.
+
+![](https://user-images.githubusercontent.com/39308313/267523865-5c8f4365-f293-4170-a66f-daa6b4cd7a2e.png)
+
+- any는 무슨 타입이든 할당되고, 무슨 타입인지 몰라도 일단 사용할 수 있다.
+- unknown은 무슨 타입이든 할당되지만, 어떤 타입인지 밝혀내기 전까지는 사용할 수 없다.
+
 ### void
-뭔가를 반환하지 않고 실행만 하는 함수 타입을 가리킨다.  
 
-```
-const func = (): void => {
-  return 1; // 에러
-}
+![](https://user-images.githubusercontent.com/39308313/267523906-e974924a-064c-4a18-b6b5-6a1ed9cea65c.png)
 
-const func2: () => void = () => {
-  return 1; // 에러가 안 남
-}
-```
+### never
 
-return하면 안 되는 함수를 작성할 땐 위와 같이 작성한다.
+![](https://user-images.githubusercontent.com/39308313/267523928-0f5ab06c-d4ac-40aa-9371-c6ddde56045a.png)
 
 ### {}
 nullish가 아닌 모든 타입을 가리킨다.  
@@ -75,41 +75,32 @@ nullish가 아닌 모든 타입을 가리킨다.
 왜냐하면 이 타입은 표현 그대로 '빈 객체'를 가리키는 타입이라 그렇다.  
 직접 사용할 일은 없겠지만 개발하다보면 {} 타입이 추론되는 경우도 있을 테니 알아만 두자.  
 
-### never
-'절대 일어나지 않을 케이스'에 대해 쓰는 타입이다.
-주로 switch문이 완벽한지 확인하기 위해 사용한다.
-```
-enum Flower {
-  Rose,
-  Rhododendron,
-  Violet,
-  Daisy,
-  Tulip
-}
-
-const flowerLatinName = (flower: Flower) => {
-  switch (flower) {
-    case Flower.Rose:
-      return "Rosa rubiginosa";
-    case Flower.Rhododendron:
-      return "Rhododendron ferrugineum";
-    case Flower.Violet:
-      return "Viola reichenbachiana";
-    case Flower.Daisy:
-      return "Bellis perennis";
-    default:
-      const _exhaustiveCheck: never = flower; // Tulip 케이스에 대한 처리가 없어서 에러 발생. 
-      return _exhaustiveCheck;
-  }
-};
-```
-
-# 타입으로 쓸 일 없는 것
+# 6. 타입으로 쓸 일 없는 것
 
 String, Number, Object, Boolean 등은 리터럴 타입이 아니라 객체를 가리킨다.  
 그래서 일반적으론 쓸 일이 없다.  
 
-# Symbol에 대해
+# 7. 타입 버전
+```
+// BigInt literals are not available when targeting lower than ES2020.
+const bigNum:bigint = 2000000000000000000n;
+```
+
+자동으로 에러 메시지를 띄우므로 tsconfig.json에서 아래와 같이 target을 바꾼다.
+
+```
+"compilerOptions" {
+  "target": "ES2020",
+}
+```
+
+# e.t.c. JS -> TS로 바꿀 때
+
+잘 실행되던 코드가 타입을 입력했더니 에러가 나는 경우는 흔하다.  
+임시방편으로 에러 코드 위에 // @ts-expect-error 주석을 달면 된다.  
+최종적으론 주석 없이 마이그레이션을 마치는 걸 목표로 하자.  
+
+# e.t.c. Symbol
 
 Symbol은 객체의 unique한 key로 쓰는 타입이다.  
 
@@ -147,25 +138,3 @@ class Person implements Person {
 const zeroCho = new Person("제로초", "조현영");
 zeroCho.print();
 ```
-
-# 타입 버전
-```
-// BigInt literals are not available when targeting lower than ES2020.
-const bigNum:bigint = 2000000000000000000n;
-```
-
-자동으로 에러 메시지를 띄우므로 tsconfig.json에서 아래와 같이 target을 바꾼다.
-
-```
-"compilerOptions" {
-  "target": "ES2020",
-}
-```
-
-### JS -> TS로 바꿀 때
-
-잘 실행되던 코드가 타입을 입력했더니 에러가 나는 경우는 흔하다.  
-임시방편으로 에러 코드 위에 // @ts-expect-error 주석을 달면 된다.  
-최종적으론 주석 없이 마이그레이션을 마치는 걸 목표로 하자.  
-
-
