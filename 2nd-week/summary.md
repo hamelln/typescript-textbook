@@ -38,5 +38,6 @@ TypeScript에서 객체 리터럴은 'fresh'하다고 판단.
 
 # 참조
 
+- 조현영(2023.08). **타입스크립트 교과서.** 길벗
 - [김병묵(2022.10). TypeScript 타입 시스템 뜯어보기: 타입 호환성](https://toss.tech/article/typescript-type-compatibility)
 - [나를 찾는 아이(2023.07). [typescript] optional 속성에 undefined를 할당할수 있을까?](https://trend21c.tistory.com/2332)
