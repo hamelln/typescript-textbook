@@ -1,3 +1,5 @@
+$\textcolor{red}{\textsf{}}$
+
 # 인터페이스
 
 > _객체(함수, 클래스 등 포함) 타입 지정._
@@ -17,10 +19,10 @@ type Person = { name?: string }
 const person: Person = { name: undefined };
 ```
 
-✅ 할당한다면 `string`  
-❌ <span style="color:red">undefined도 할당 OK</span>  
+✅ 할당한다면 string  
+❌ $\textcolor{#ed322199}{\textsf{undefined도 할당 OK}}$
 
-이를 엄격히 체크하려면 `tsconfig.ts`에서 `exactOptionalPropertyTypes: true`로 바꾼다.
+엄격히 체크하려면 `tsconfig.ts`에서 `exactOptionalPropertyTypes: true`로 바꾼다.
 
 # 네임스페이스
 
