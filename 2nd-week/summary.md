@@ -41,10 +41,12 @@ const person: Person = { name: undefined };
 
 # 타입 호환성
 
-타이핑에는 명목적 서브타이핑과 구조적 서브타이핑(덕 타이핑)이 있다.  
-TS는 객체 리터럴을 'fresh'한 객체라고 판단한다.  
-변수에 담겨서 타입이 추론되거나, as로 타입을 단언한 경우엔 'fresh'를 잃는다.  
-요점은 TS에서 객체 리터럴은 타입 검사가 꼼꼼하다.  
+타이핑에는 **명목적 서브타이핑**과 **구조적 서브타이핑(덕 타이핑)**이 있다.  
+
+![type-compatibility-1](https://github.com/hamelln/typescript-textbook/assets/39308313/0dd4b945-a20a-41bc-848f-7b17751bccf3)
+
+TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 간주하는데 이 경우에는 타입 체크를 꼼꼼하게 시행한다.  
+**이미 변수에 담겨서 타입이 추론**되거나, **as로 타입을 단언**한 경우엔 $\textcolor{#3498DB}{\textsf{fresh}}$를 잃는다.  
 
 # 제네릭
 
