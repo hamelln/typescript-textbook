@@ -15,15 +15,7 @@ const brewery: Brewery = {
 //? optional 속성은 할당된 게 없을 땐 undefined로 입력된다.
 console.log(brewery.name); // undefined
 //? interface에 안 적어둔 속성은 조회 자체가 불가능하고 에러 발생
-// console.log(brewery.description); // Error
-
-const brewery2: Brewery = {
-  id: "아이디2",
-  description: "설명",
-};
-
-const brewery3: Brewery = brewery2;
-console.log(brewery3);
+console.log(brewery.description); // Error
 
 interface Add {
   (x: number, y: number): number;
