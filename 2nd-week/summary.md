@@ -1,33 +1,33 @@
 # 인터페이스
 
-'객체(함수, 클래스 등 포함)' 타입 지정.  
-옵셔널 속성은 없을 시에 undefined. 없는 속성을 조회하면 에러가 뜬다.
-(원래 JS에선 객체에 없는 속성을 조회할 경우 undefined를 반환하는데, TS의 옵셔널이 비슷하다.)  
+> _객체(함수, 클래스 등 포함) 타입 지정._
 
 ```
 type Person = { name?: string }
 const person:Person = {};
-person.name // undefined
+person.name // undefined: 옵셔널 속성에 값이 없으면 undefined
+person.id // Error: 없는 속성을 조회하려고 하면 에러
 ```
 
 ### exactOptionalPropertyTypes
 
 ```
 type Person = { name?: string }
+// ❓ 이런 코드를 허용해도 괜찮을까?
 const person: Person = { name: undefined };
 ```
 
-기본적으로 TypeScript는 위의 코드를 막지 않는다.  
-그런데 "아직 할당이 안 된 것"과 "undefined로 할당한 것"은 의미가 다르다.  
-"할당한다면 string"이지, "undefined도 OK"가 아니다.  
-엄격히 체크하려면 tsconfig.ts에서 exactOptionalPropertyTypes: true로 바꾼다.
+- 할당한다면 string ✅
+- undefined도 할당 OK ❌  
+
+이를 엄격히 체크하려면 tsconfig.ts에서 exactOptionalPropertyTypes: true로 바꾼다.
 
 ### 인터페이스 재선언
 
 인터페이스는 재선언이 가능하다. 재선언 시 이전에 선언한 인터페이스와 '병합'이 일어난다.
 
-- 기존의 속성을 다른 타입으로 바꾸는 건 불가능
-- 기존에 없던 속성을 적으면 추가됨
+1️⃣ 기존의 속성을 다른 타입으로 바꾸는 건 불가능  
+2️⃣ 기존에 없던 속성을 적으면 추가됨  
 
 # 네임스페이스
 
