@@ -1,4 +1,4 @@
-//@ 필수 속성 외에 어떤 추가 속성이 들어오더라도 허용.
+//📒 잉여 속성을 명시적으로 허용하고 싶을 경우. 그러나 위험하단 것도 염두하자.
 interface Food {
   protein: number;
   carbohydrates: number;

@@ -1,4 +1,4 @@
-//@ type은 "&"를 써서 상속받고 interface는 "extends"를 써서 상속받는다.
+//📒 interface는 "extends"를 써서 상속받는다.
 type Animal = { name: string };
 
 interface Dog extends Animal {
@@ -12,17 +12,11 @@ const dog: Dog = {
   },
 };
 
-interface Person {
-  name: string;
-}
-
-type ProgramMajor = "frontend" | "backend" | "design" | "architect" | "devops";
-type DesignMajor = "web" | "UI" | "game" | "colorist" | "graphic";
+//📒 type은 "&"를 써서 상속받는다.
+type Person = { name: string };
 type Worker = Person & { major: string };
-interface Programmer extends Worker {
-  major: ProgramMajor;
-}
-type Designer = Worker & { major: number }; // 에러는 안 띄우고 never로 처리함.
+type Major = "frontend" | "backend" | "design" | "architect" | "devops";
+type Programmer = Worker & { major: Major };
 
 const programmer: Programmer = {
   name: "이태현",
