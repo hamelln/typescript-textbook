@@ -41,12 +41,20 @@ const person: Person = { name: undefined };
 
 # 타입 호환성
 
-타이핑에는 **명목적 서브타이핑**과 **구조적 서브타이핑(덕 타이핑)**이 있다.  
+타이핑에는 **명목적 서브타이핑과 구조적 서브타이핑**이 있다.  
+- 명목적 서브타이핑: A-Z까지 정확하게 검사  
+예) TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 간주한다. 이 땐 더도 덜도 말고 완전히 정확한지 체크한다.  
+- 구조적 서브타이핑: 요구 사항만 갖췄으면 잉여 속성이 있어도 허용.  
+예) **이미 변수에 담겨서 타입이 추론**되거나, **as 등으로 타입을 단언**한 객체는 $\textcolor{#3498DB}{\textsf{fresh}}$를 잃는다.
+이런 객체는 요구 사항을 갖췄는지만 본다.  
+
+예시 코드로 확인해보자.
 
 ![type-compatibility-1](https://github.com/hamelln/typescript-textbook/assets/39308313/0dd4b945-a20a-41bc-848f-7b17751bccf3)
 
-TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 간주하는데 이 경우에는 타입 체크를 꼼꼼하게 시행한다.  
-**이미 변수에 담겨서 타입이 추론**되거나, **as로 타입을 단언**한 경우엔 $\textcolor{#3498DB}{\textsf{fresh}}$를 잃는다.  
+![type-compatibility-2](https://github.com/hamelln/typescript-textbook/assets/39308313/057cd9ed-3fb1-4617-98ed-3d786660a080)
+
+![type-compatibility-3](https://github.com/hamelln/typescript-textbook/assets/39308313/3bef8c15-fec4-432a-b933-5c330b4b7bde)
 
 # 제네릭
 
