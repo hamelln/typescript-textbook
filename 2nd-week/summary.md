@@ -36,7 +36,7 @@ $\textcolor{red}{\textsf{}}$
 
 ![interface-merging](https://github.com/hamelln/typescript-textbook/assets/39308313/a820aa90-2720-4732-beab-7aa5822f2c1d)
 
-내가 작성한 인터페이스가 아닌, API에 내가 원하는 속성을 지정할 때 유용하다.  
+API 타입을 지정할 때 유용하다.  
 
 # 타입 호환성
 
