@@ -41,27 +41,34 @@ API 타입을 지정할 때 유용하다.
 
 # 타입 호환성
 
-타이핑에는 **명목적 서브타이핑과 구조적 서브타이핑**이 있다.  
-- 명목적 서브타이핑: A-Z까지 정확하게 검사  
-예) TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 간주한다. 이 땐 더도 덜도 말고 명시한 타입과 완전히 정확한지 체크한다.  
-- 구조적 서브타이핑: 요구 사항만 갖췄으면 잉여 속성이 있어도 허용.  
-예) **이미 변수에 담겨서 타입이 추론, 결정됐거나, as 등으로 타입 단언한 객체는 $\textcolor{#3498DB}{\textsf{freshness}}$를 잃는다.**  
-이런 객체는 요구 사항을 갖췄는지만 본다.  
-
-구조적 서브타이핑은 덕 타이핑이라고 부르기도 한다. 왜 그런가하면, 예시를 보자.
+타이핑은 여러 종류가 있다.
+1️⃣ 명목적 타이핑(Nominal Typing): 
+```
+type A = { name: string }
+type B = { name: string }
+let a:A = { name: "현" }
+let b:B = { name: "현" }
+a = b; //❗ Error: 타입 이름이 다르면 구조가 같아도 거절.
+```
+2️⃣ 구조적 타이핑(Structure Typing): 필수 구조만 같으면 동일하다고 인정. 잉여 속성이 있어도 인정.  
+구조적 타이핑은 덕 타이핑이라고 부르기도 한다. 간단한 설명을 보고 가자.  
 
 Q) **“오리란 무엇인가?”**
 
 1. 딱 봐도 오리 같은 부리를 가졌다.
 2. 딱 봐도 오리 같은 눈을 가졌다.
 
-위의 2가지 조건을 갖추면 오리라고 부르기로 하자.
+위 두 조건을 갖추면 오리라고 정의하겠다.
 
 ![rp0g39w789nqe8uzge8p](https://github.com/hamelln/typescript-textbook/assets/39308313/1b280fe5-0bc6-4c4c-bd15-2b34dd8baeaa)
 
-그럼 이 녀석은 완벽한 오리다.
+반박할 여지 없이 완벽한 오리라고 해야 한다.(포토샵이라는 의문 제기 안 받음)  
 
-코드로도 확인해보자.
+코드로도 확인할 텐데, 그 전에 한 가지 사실을 염두하고 보자.
+
+TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 간주한다.  
+객체 리터럴이 타입 체크를 받을 땐 **구조가 완벽하게 일치**하는지 체크한다. 더 있어도, 부족해도 에러를 낸다.  
+**이미 변수에 담겨 추론되거나 as의 타입 단언 등, 타입이 결정된 객체는 $\textcolor{#3498DB}{\textsf{freshness}}$를 잃는다.**  
 
 ![type-compatibility-1](https://github.com/hamelln/typescript-textbook/assets/39308313/0dd4b945-a20a-41bc-848f-7b17751bccf3)
 
@@ -99,3 +106,4 @@ C#, Java 같은 정적 타입 언어들은 다양한 타입이 들어와도 유�
 - [나를 찾는 아이(2023.07). [typescript] optional 속성에 undefined를 할당할수 있을까?](https://trend21c.tistory.com/2332)
 - [캡틴판교. 제네릭 제약 조건.](https://joshua1988.github.io/ts/guide/generics.html#%EC%A0%9C%EB%84%A4%EB%A6%AD%EC%9D%98-%ED%95%9C-%EC%A4%84-%EC%A0%95%EC%9D%98%EC%99%80-%EC%98%88%EC%8B%9C)
 - [Antonello Zanini(2022.08). How to extend the Express Request object in TypeScript](https://blog.logrocket.com/extend-express-request-object-typescript/)
+- [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html#structural-type-system)
