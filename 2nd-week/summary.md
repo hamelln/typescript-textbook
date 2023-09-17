@@ -66,14 +66,17 @@ Q) **“오리란 무엇인가?”**
 
 반박할 여지 없이 완벽한 오리다.(포토샵이라는 의문 안 받음)  
 
-코드로도 확인할 텐데, 그 전에 한 가지 사실을 염두하고 보자.
+코드로도 확인해보자.  
 
-TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 간주한다.  
-객체 리터럴 만큼은 **구조가 완벽하게 일치**하는지 체크한다.  
-더 있어도 에러, 부족해도 에러다.  
+![type-compatibility-0](https://github.com/hamelln/typescript-textbook/assets/39308313/19f1a3bb-acf8-436a-bd53-937409660fb0)
+
+### 객체 리터럴: 엄격하게 검사
+
+TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 분류하고 **구조가 완벽하게 일치**하는지 체크한다.  
 **이미 변수에 담겨 추론되거나 as의 타입 단언 등, 타입이 결정된 객체는 $\textcolor{#3498DB}{\textsf{freshness}}$를 잃는다.**  
+아래 예제를 통해 알아보자.
 
-![type-compatibility-1](https://github.com/hamelln/typescript-textbook/assets/39308313/0dd4b945-a20a-41bc-848f-7b17751bccf3)
+![type-compatibility-literal](https://github.com/hamelln/typescript-textbook/assets/39308313/82be080e-a9f7-46b9-ba53-59908a822740)
 
 객체 지향 프로그래밍(OOP)의 선구자 중 한 명인 앨런 커티스 케이(Alan Curtis Kay)는 “바인딩을 느리게 할수록 객체의 문제 해결 능력이 더욱 유연해진다.”고 믿었다.  
 또 OOP에서 중요한 개념 중 하나로 다형성을 꼽는데, 구조적 서브타이핑은 이와 같은 조건들을 만족한다.  
