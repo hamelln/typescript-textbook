@@ -27,9 +27,10 @@ $\textcolor{red}{\textsf{}}$
 2️⃣ 기존에 없던 속성과 타입 추가 가능   
 3️⃣ **다른 모듈에서 import한 인터페이스는 병합 불가능**  
 
+즉, 아래와 같이 인터페이스를 같은 공간에서 작성해야 병합이 된다. 
+
 ![interface-merging-0](https://github.com/hamelln/typescript-textbook/assets/39308313/9273b7d0-aad5-4c2a-8599-81d206e49feb)
 
-인터페이스를 저렇게 같은 공간에서 작성해야 병합이 된다. 
 > “굳이?”
 
 굳이 이렇게 병합을 지원하는 건 다른 이유 때문이다.  
