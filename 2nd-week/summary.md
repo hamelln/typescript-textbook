@@ -14,6 +14,7 @@ $\textcolor{red}{\textsf{}}$
 ![optional](https://github.com/hamelln/typescript-textbook/assets/39308313/60276aa3-d0ce-4fc5-9585-917b37460052)
 
 아마 보통은 이렇게 생각할 것이다.  
+
 ✅ $\textcolor{#ffffffc7}{\textsf{할당한다면 string만 허용하자.}}$  
 ❌ $\textcolor{#ed322199}{\textsf{undefined도 할당 OK}}$  
 
@@ -41,8 +42,8 @@ API 타입을 지정할 때 유용하다.
 
 # 타입 호환성
 
-타이핑은 여러 종류가 있다.
-1️⃣ 명목적 타이핑(Nominal Typing): 
+타이핑은 여러 종류가 있다.  
+### 1️⃣ 명목적 타이핑(Nominal Typing)
 ```
 type A = { name: string }
 type B = { name: string }
@@ -50,7 +51,8 @@ let a:A = { name: "현" }
 let b:B = { name: "현" }
 a = b; //❗ Error: 타입 이름이 다르면 구조가 같아도 거절.
 ```
-2️⃣ 구조적 타이핑(Structure Typing): 필수 구조만 같으면 동일하다고 인정. 잉여 속성이 있어도 인정.  
+### 2️⃣ 구조적 타이핑(Structure Typing)  
+**필수 구조만 같으면 동일**하다고 인정.  
 구조적 타이핑은 덕 타이핑이라고 부르기도 한다. 간단한 설명을 보고 가자.  
 
 Q) **“오리란 무엇인가?”**
@@ -62,12 +64,13 @@ Q) **“오리란 무엇인가?”**
 
 ![rp0g39w789nqe8uzge8p](https://github.com/hamelln/typescript-textbook/assets/39308313/1b280fe5-0bc6-4c4c-bd15-2b34dd8baeaa)
 
-반박할 여지 없이 완벽한 오리라고 해야 한다.(포토샵이라는 의문 제기 안 받음)  
+반박할 여지 없이 완벽한 오리다.(포토샵이라는 의문 안 받음)  
 
 코드로도 확인할 텐데, 그 전에 한 가지 사실을 염두하고 보자.
 
 TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 간주한다.  
-객체 리터럴이 타입 체크를 받을 땐 **구조가 완벽하게 일치**하는지 체크한다. 더 있어도, 부족해도 에러를 낸다.  
+객체 리터럴 만큼은 **구조가 완벽하게 일치**하는지 체크한다.  
+더 있어도 에러, 부족해도 에러다.  
 **이미 변수에 담겨 추론되거나 as의 타입 단언 등, 타입이 결정된 객체는 $\textcolor{#3498DB}{\textsf{freshness}}$를 잃는다.**  
 
 ![type-compatibility-1](https://github.com/hamelln/typescript-textbook/assets/39308313/0dd4b945-a20a-41bc-848f-7b17751bccf3)
