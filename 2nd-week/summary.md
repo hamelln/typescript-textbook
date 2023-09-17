@@ -70,24 +70,22 @@ Q) **“오리란 무엇인가?”**
 
 ![type-compatibility-0](https://github.com/hamelln/typescript-textbook/assets/39308313/19f1a3bb-acf8-436a-bd53-937409660fb0)
 
+객체 지향 프로그래밍(OOP)의 선구자 중 한 명인 앨런 커티스 케이(Alan Curtis Kay)는 “바인딩을 느리게 할수록 객체의 문제 해결 능력이 더욱 유연해진다.”고 믿었다.  
+또 OOP에서 중요한 개념 중 하나로 다형성을 꼽는데, 구조적 서브타이핑은 이와 같은 조건들을 만족한다.  
+음식의 조건을 갖췄는데 버거라는 이유로, 피자라는 이유로 칼로리 계산을 못하게 엄격히 막을 필요는 없을 것이다.  
+하지만, 특별 케이스가 하나 있다.
+
 ### 객체 리터럴: 엄격하게 검사
 
 TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 분류하고 **구조가 완벽하게 일치**하는지 체크한다.  
-**이미 변수에 담겨 추론되거나 as의 타입 단언 등, 타입이 결정된 객체는 $\textcolor{#3498DB}{\textsf{freshness}}$를 잃는다.**  
+**이미 변수에 담겨 추론되거나 as의 타입 단언 등, 타입이 결정된 객체는 $\textcolor{#3498DB}{\textsf{freshness}}$를 잃어서 덕 타이핑으로 체크.**  
 아래 예제를 통해 알아보자.
 
 ![type-compatibility-literal](https://github.com/hamelln/typescript-textbook/assets/39308313/82be080e-a9f7-46b9-ba53-59908a822740)
 
-객체 지향 프로그래밍(OOP)의 선구자 중 한 명인 앨런 커티스 케이(Alan Curtis Kay)는 “바인딩을 느리게 할수록 객체의 문제 해결 능력이 더욱 유연해진다.”고 믿었다.  
-또 OOP에서 중요한 개념 중 하나로 다형성을 꼽는데, 구조적 서브타이핑은 이와 같은 조건들을 만족한다.  
-음식의 조건을 갖췄는데 버거라는 이유로, 피자라는 이유로 칼로리 계산을 못하게 엄격히 막을 필요는 없을 것이다.  
+### 브랜딩 기법
 
-암묵적으로 덕 타이핑을 허용하느니, 차라리 명시적으로 덕 타이핑을 허용하는 게 그나마 나을지 모른다.  
-그런 경우에는 아래처럼 작성한다.
-
-![type-compatibility-2](https://github.com/hamelln/typescript-textbook/assets/39308313/057cd9ed-3fb1-4617-98ed-3d786660a080)
-
-잉여 속성을 철저하게 거부하고 싶은 상황도 있다. 그럴 땐 **브랜딩 기법**을 활용한다.  
+잉여 속성이 들어오는 걸 원천 차단하고 싶다면 **브랜딩 기법**을 활용한다.  
 
 ![type-compatibility-3](https://github.com/hamelln/typescript-textbook/assets/39308313/3bef8c15-fec4-432a-b933-5c330b4b7bde)
 
