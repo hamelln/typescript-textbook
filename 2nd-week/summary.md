@@ -31,7 +31,7 @@ $\textcolor{red}{\textsf{}}$
 
 ![interface-merging-0](https://github.com/hamelln/typescript-textbook/assets/39308313/9273b7d0-aad5-4c2a-8599-81d206e49feb)
 
-> “굳이?”
+> $\textcolor{#ffffffc7}{\textsf{“굳이?”}}$
 
 굳이 이렇게 병합을 지원하는 건 다른 이유 때문이다.  
 
