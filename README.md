@@ -44,9 +44,9 @@ enum이 유니온과 비슷한데 성능면에서 차이가 있다.
 
 ## unknown
 
-쓸 일은 별로 없다. 외부 요청에서 어떤 타입이 올지 확신이 없다면 써보자.  
-
 ![](https://user-images.githubusercontent.com/39308313/267523865-5c8f4365-f293-4170-a66f-daa6b4cd7a2e.png)
+
+외부에 요청하는 것처럼 어떤 타입이 올지 확신이 없다면 써보자.  
 
 ![1-unknown](https://github.com/hamelln/typescript-textbook/assets/39308313/1f4f27db-6421-41b5-8f40-d18574cd72c2)
 
