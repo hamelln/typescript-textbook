@@ -34,57 +34,55 @@ enum이 유니온과 비슷한데 성능면에서 차이가 있다.
 
 ![](https://user-images.githubusercontent.com/39308313/267523940-911febfc-4149-4c14-b573-162e8442e4ef.png)
 
-# 5. any
+# 5. 그 외 타입
+
+##. any
 
 쓸 필요 없는 타입. 사용하면 타입 검사로 쌓은 코드의 신빙성과 논리를 전부 무너뜨릴 수 있다.  
 
 ![1-any](https://github.com/hamelln/typescript-textbook/assets/39308313/6e8c3e81-de7d-4c33-9071-294e9c6bc47d)
 
-### unknown
+## unknown
 
 쓸 일은 별로 없다. 외부 요청에서 어떤 타입이 올지 확신이 없다면 써보자.  
 
 ![](https://user-images.githubusercontent.com/39308313/267523865-5c8f4365-f293-4170-a66f-daa6b4cd7a2e.png)
 
-![](https://user-images.githubusercontent.com/39308313/267523947-0dcff004-2de0-44ed-9002-53a160f82bd3.png)
+![1-unknown](https://github.com/hamelln/typescript-textbook/assets/39308313/1f4f27db-6421-41b5-8f40-d18574cd72c2)
 
-### void
+## void
 
 ![1-void](https://github.com/hamelln/typescript-textbook/assets/39308313/2739ea81-3fb9-42b2-bccd-2501846a2933)
 
-### never
+## never
 
 ![1-never](https://github.com/hamelln/typescript-textbook/assets/39308313/dc3a17cf-dd67-4b40-99fc-7da89ee20637)
 
-### {}
+## {}
 
 - Nullish가 아니면 전부 할당 가능.
 - '빈 객체'를 가리키는 타입.
 - 쓸 일은 없지만 알아만 두자.
 
-$\textcolor{red}{\textsf{}}$
-
-# 네임스페이스
+# 6. 네임스페이스
 
 이름이 겹치면 안 되는 인터페이스, 타입, 클래스, 특정한 값은 네임스페이스로 **유일성**을 보장한다.  
-예시는 아래에서 확인하자.
+예시는 아래의 인터페이스 병합과 같이 확인하자.
 
-# 인터페이스
+# 7. 인터페이스
 
-> _“인터페이스는 객체(함수, 클래스 등 포함) 타입을 지정한다.”_
-
-### 옵셔널과 undefined
+## 옵셔널과 undefined
 
 ![optional](https://github.com/hamelln/typescript-textbook/assets/39308313/60276aa3-d0ce-4fc5-9585-917b37460052)
 
 아마 보통은 이렇게 생각할 것이다.  
 
 ✅ $\textcolor{#ffffffc7}{\textsf{할당한다면 string만 허용하자.}}$  
-❌ $\textcolor{#ed322199}{\textsf{undefined도 할당 OK}}$  
+❌ $\textcolor{#ed322199}{\textsf{undefined을 할당해도 OK}}$  
 
 일부러 undefined가 할당되는 것을 방지하려면 `tsconfig.ts`에서 `exactOptionalPropertyTypes: true`로 바꾼다.
 
-# 인터페이스 재선언
+## 인터페이스 재선언
 
 인터페이스는 **재선언**이 가능하다. 아래 조건을 만족하면 원래의 인터페이스와 **병합**이 일어난다.
 
@@ -92,7 +90,7 @@ $\textcolor{red}{\textsf{}}$
 2️⃣ 기존에 없던 속성과 타입 추가 가능   
 3️⃣ **다른 모듈에서 import한 인터페이스는 병합 불가능**  
 
-즉, 아래와 같이 인터페이스를 같은 공간에서 작성해야 병합이 된다. 
+아래와 같이 인터페이스를 **같은 스코프**에서 작성하면 병합된다. 
 
 ![interface-merging-0](https://github.com/hamelln/typescript-textbook/assets/39308313/9273b7d0-aad5-4c2a-8599-81d206e49feb)
 
@@ -104,39 +102,37 @@ $\textcolor{red}{\textsf{}}$
 
 API 타입을 지정할 때 유용하다.  
 
-# 타입 호환성
+# 8. 타입 호환성
 
-타이핑은 여러 종류가 있다.  
+타이핑은 여러 종류가 있는데 지금은 두 가지만 보겠다.  
 ### 1️⃣ 명목적 타이핑(Nominal Typing)
-```
-type A = { name: string }
-type B = { name: string }
-let a:A = { name: "현" }
-let b:B = { name: "현" }
-a = b; //❗ Error: 타입 이름이 다르면 구조가 같아도 거절.
-```
+
+![1-nominal-typing](https://github.com/hamelln/typescript-textbook/assets/39308313/21d66e5f-a325-45d1-aa04-86c0597ba60b)
+
 ### 2️⃣ 구조적 타이핑(Structure Typing)  
-**타입스크립트가 채택한 방식. 필수 구조만 같으면 동일**하다고 인정.  
-구조적 타이핑은 덕 타이핑이라고 부르기도 한다. 간단한 설명을 보고 가자.  
+
+![1-duck-typing](https://github.com/hamelln/typescript-textbook/assets/39308313/f141dd37-9dba-4ed0-a54e-6e955dc897cf)
+
+**타입스크립트가 택한 방식. 최소한의 구조만 같으면 동일.**  
+구조적 타이핑은 덕 타이핑이라고 부르기도 한다. 
 
 Q) **“오리란 무엇인가?”**
+만약 동물 협회에서 아래 두 조건을 갖추면 오리라고 정의했다고 치자.
 
 1. 딱 봐도 오리 같은 부리를 가졌다.
 2. 딱 봐도 오리 같은 눈을 가졌다.
 
-위 두 조건을 갖추면 오리라고 정의하겠다.
-
 ![rp0g39w789nqe8uzge8p](https://github.com/hamelln/typescript-textbook/assets/39308313/1b280fe5-0bc6-4c4c-bd15-2b34dd8baeaa)
 
-반박할 여지 없이 완벽한 오리다.(포토샵이라는 의문 안 받음)  
-
-코드로도 확인해보자.  
+그러면 위의 사진은 진짜 오리라고 공인한다.  
+이런 논리로 타입을 맞추는 게 구조적 타이핑이다.  
+코드로 확인해보자.  
 
 ![type-compatibility-0](https://github.com/hamelln/typescript-textbook/assets/39308313/19f1a3bb-acf8-436a-bd53-937409660fb0)
 
 객체 지향 프로그래밍 관점으로 보자면 구조적 타이핑은 다형성을 허용한다.  
-버거든 피자든, 음식이라는 조건을 갖추면 칼로리 계산을 허용함으로서 유연성을 발휘한다.  
-그런데 이 유연성이 항상 적용되는 건 아니다. 특별 케이스가 하나 있다.  
+음식이라는 조건만 맞으면 버거든 뭐든 유연하게 처리한다.  
+이 유연성은 항상 적용되진 않는다. 특별 케이스가 하나 있다.  
 
 ### 객체 리터럴: 엄격하게 검사
 
