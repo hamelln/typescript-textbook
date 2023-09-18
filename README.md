@@ -3,7 +3,7 @@ $\textcolor{#ffffffc7}{\textsf{}}$
 이 글에서 말하는 몇몇 단어들은 아래의 뜻을 의미한다.  
 
 1️⃣ $\textcolor{#ffffffc7}{\textsf{객체: 보통은 객체, 배열, 클래스, 함수 등 원시 타입이 아닌 것들을 전부 말한다.}}$  
-2️⃣ $\textcolor{#ffffffc7}{\textsf{리터럴, 리터럴 타입: 값을 뜻한다. n = 1에서 리터럴 타입은 1이다. number가 아니다.}}$
+2️⃣ $\textcolor{#ffffffc7}{\textsf{리터럴(타입): 값을 뜻한다. n = 1에서 리터럴 타입은 1이다. number가 아니다.}}$
 
 # 1. 타입 명시란?
 
@@ -28,19 +28,21 @@ let, 객체: 값이나 속성이 변할 수 있어서 범용적으로 추론.
 # 4. 유니온
 
 제네릭과 더불어 매우 중요한 타입 중 하나.  
-enum이 유니온과 비슷한데, 트랜스파일링 때 유니온은 사라지고 enum은 객체로 변환돼 메모리에 남는다는 차이가 있다.(tree-shaking)  
+enum이 유니온과 비슷한데 성능면에서 차이가 있다.  
+트랜스파일링 때 유니온은 사라지고 enum은 객체로 변환돼 메모리에 남는다.(tree-shaking)  
+유니온으로 해결할 수 있다면 유니온으로 해결하면 좋다.  
 
 ![](https://user-images.githubusercontent.com/39308313/267523940-911febfc-4149-4c14-b573-162e8442e4ef.png)
 
 # 5. any
 
-어떤 경우에도 쓸 필요가 없는 타입. 타입 검사로 쌓은 코드의 신빙성과 논리를 전부 무너뜨린다.  
+쓸 필요 없는 타입. 사용하면 타입 검사로 쌓은 코드의 신빙성과 논리를 전부 무너뜨릴 수 있다.  
 
 ![1-any](https://github.com/hamelln/typescript-textbook/assets/39308313/6e8c3e81-de7d-4c33-9071-294e9c6bc47d)
 
 ### unknown
 
-쓸 일이 별로 없지만, any보다 형편이 나은 타입.  
+쓸 일은 별로 없다. 외부 요청에서 어떤 타입이 올지 확신이 없다면 써보자.  
 
 ![](https://user-images.githubusercontent.com/39308313/267523865-5c8f4365-f293-4170-a66f-daa6b4cd7a2e.png)
 
