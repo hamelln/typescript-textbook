@@ -168,6 +168,7 @@ C#, Java 같은 정적 타입 언어들은 다양한 타입이 들어와도 유�
 - [TypeScript 공식](https://www.typescriptlang.org/)
 - [김병묵(2022.10). TypeScript 타입 시스템 뜯어보기: 타입 호환성. toss tech](https://toss.tech/article/typescript-type-compatibility)
 - [박서진(2021.05). Template Literal Types로 타입 안전하게 코딩하기. toss tech](https://toss.tech/article/template-literal-types)
+- [Daniel Bartholomae(2021.01). 10 bad TypeScript habits to break this year](https://ui.toast.com/weekly-pick/ko_20210217)
 - [캡틴판교. 제네릭 제약 조건.](https://joshua1988.github.io/ts/guide/generics.html#%EC%A0%9C%EB%84%A4%EB%A6%AD%EC%9D%98-%ED%95%9C-%EC%A4%84-%EC%A0%95%EC%9D%98%EC%99%80-%EC%98%88%EC%8B%9C)
 - [멍개(2022.07). [typescript] 트리쉐이킹 - enum을 써야하는가?](https://blog.naver.com/pjt3591oo/222817775732)
 - [나를 찾는 아이(2023.07). [typescript] optional 속성에 undefined를 할당할수 있을까?](https://trend21c.tistory.com/2332)
