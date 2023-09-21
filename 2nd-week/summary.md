@@ -114,6 +114,10 @@ C#, Java 같은 정적 타입 언어들은 다양한 타입이 들어와도 유�
 
 ![constraint-1](https://github.com/hamelln/typescript-textbook/assets/39308313/acc754c2-57fa-4edf-a8be-188cf3659088)
 
+### 조건부 타입과 타입 제한
+
+![constraint-2](https://github.com/hamelln/typescript-textbook/assets/39308313/bf794727-edb7-4fe0-a6c8-58b9a24091f1)
+
 ### 에러 처리와 제네릭
 
 에러는 수많은 원인과 속성이 있기 때문에 타입 단언을 못하고 unknown으로 추론한다.  
