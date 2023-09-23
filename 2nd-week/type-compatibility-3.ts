@@ -22,5 +22,14 @@ const burger2: Food = {
   __brand: "Food",
 };
 
+const burger3 = {
+  protein: 100,
+  carbohydrates: 100,
+  fat: 100,
+  __brand: "Food" as const,
+  sad: "asd",
+};
+
 calculateCalorie(burger1); //❗ __brand: string으로 추론해서 에러
 calculateCalorie(burger2); // 에러 안 남
+calculateCalorie(burger3);
