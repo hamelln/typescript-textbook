@@ -1,4 +1,4 @@
-# overloading & overriding
+# overloading
 
 ![overloading-1](https://github.com/hamelln/typescript-textbook/assets/39308313/b7af46b7-7de4-45ff-8c9c-995aeeef0865)
 ![overloading-2](https://github.com/hamelln/typescript-textbook/assets/39308313/7d8c74eb-df63-4128-be33-24a8deaadfd1)
