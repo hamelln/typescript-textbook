@@ -9,7 +9,7 @@
 
 ![params-args](https://github.com/hamelln/typescript-textbook/assets/39308313/f81fde11-526e-4bfe-8f1a-6de69b78664a)
 
-# "private" vs "#"
+# private vs \#
 
 ![private](https://github.com/hamelln/typescript-textbook/assets/39308313/dcc018ca-f29f-42a4-a5c7-c5df215b1f77)
 
