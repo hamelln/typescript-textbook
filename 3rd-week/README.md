@@ -48,5 +48,5 @@ infer는 extends와 같이 써야만 하고, 따로 쓸 수는 없다.
 ![type-narrowing-1](https://github.com/hamelln/typescript-textbook/assets/39308313/5f59a381-4b68-4130-8670-6d77550b9275)
 
 # 참조
-
+- 조현영(2023.08). **타입스크립트 교과서.** 길벗
 - [Dmitri Pavlutin(2023.03). TypeScript Function Overloading](https://dmitripavlutin.com/typescript-function-overloading/)
