@@ -23,22 +23,21 @@ let, 객체: 값이나 속성이 변할 수 있어서 범용적으로 추론.
 
 각 index마다 타입을 지정한 배열 타입.  
 
-![1-tuple](https://github.com/hamelln/typescript-textbook/assets/39308313/512e4599-dfd1-4ace-8204-11633acb6429)
+![1-tuple](https://github.com/hamelln/typescript-textbook/assets/39308313/31a06043-8ee4-481b-ab3f-1a12f6898ea9)
 
-# 4. 유니온
+# 4. 유니온과 enum
 
-제네릭과 더불어 매우 중요한 타입 중 하나.  
 enum이 유니온과 비슷한데 성능면에서 차이가 있다.  
 트랜스파일링 때 유니온은 사라지고 enum은 객체로 변환돼 메모리에 남는다.(tree-shaking)  
-유니온으로 해결할 수 있다면 유니온으로 해결하면 좋다.  
+const enum은 메모리에 안 남지만, TypeScript 문서에서는 reverse-mapping 같은 특이 케이스를 제외하곤 enum 사용을 지양한다고 서술한다.  
 
-![](https://user-images.githubusercontent.com/39308313/267523940-911febfc-4149-4c14-b573-162e8442e4ef.png)
+![union-enum](https://github.com/hamelln/typescript-textbook/assets/39308313/49f39cd4-f883-419f-9054-5a1089cca2db)
 
 # 5. 그 외 타입
 
 ## any
 
-쓸 필요 없는 타입. 사용하면 타입 검사로 쌓은 코드의 신빙성과 논리를 전부 무너뜨릴 수 있다.  
+어지간해선 금지해야 할 타입.   
 
 ![1-any](https://github.com/hamelln/typescript-textbook/assets/39308313/6e8c3e81-de7d-4c33-9071-294e9c6bc47d)
 
@@ -56,6 +55,8 @@ enum이 유니온과 비슷한데 성능면에서 차이가 있다.
 
 ## never
 
+단어 뜻처럼, 절대로 발생할 일이 없는 경우에 작성하는 타입. 코드의 완전함을 나타낸다.
+
 ![1-never](https://github.com/hamelln/typescript-textbook/assets/39308313/dc3a17cf-dd67-4b40-99fc-7da89ee20637)
 
 ## {}
@@ -70,12 +71,12 @@ enum이 유니온과 비슷한데 성능면에서 차이가 있다.
 
 ![optional](https://github.com/hamelln/typescript-textbook/assets/39308313/60276aa3-d0ce-4fc5-9585-917b37460052)
 
-보통은 이렇게 생각할 것이다.  
+옵셔널 속성에 값이 없을 때 조회하면 undefined가 나오는 것과 별개로, 개발자가 '일부러' undefined를 할당해도 되는지는 의문스럽다.  
 
 ✅ $\textcolor{#ffffffc7}{\textsf{할당한다면 string만 허용하자.}}$  
 ❌ $\textcolor{#ed322199}{\textsf{undefined을 할당해도 OK}}$  
 
-일부러 undefined가 할당되는 것을 방지하려면 `tsconfig.ts`에서 `exactOptionalPropertyTypes: true`로 바꾼다.
+`tsconfig.ts`에서 `exactOptionalPropertyTypes: true`로 설정하면 고의로 undefined를 할당하는 게 금지된다.
 
 ## 인터페이스 재선언
 
@@ -131,17 +132,17 @@ Q) **“오리란 무엇인가?”**
 
 ### 객체 리터럴: 엄격하게 검사
 
-TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 분류하고 **구조가 완벽하게 일치**하는지 체크한다.  
-**이미 변수에 담겨 추론되거나 as의 타입 단언 등, 타입이 결정된 객체는 $\textcolor{#3498DB}{\textsf{freshness}}$를 잃어서 덕 타이핑으로 체크.**  
+TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}$라고 분류하고 **구조가 100% 일치**하는지 체크한다. 즉, 속성이 부족해도 안 되고, 넘쳐나도 안 된다.  
+**이미 변수에 담겼거나 as로 타입을 단언했다면 $\textcolor{#3498DB}{\textsf{freshness}}$를 잃었기 때문에 잉여 속성을 허용한 채 체크한다.**  
 아래 예제를 통해 알아보자.
 
-![type-compatibility-literal](https://github.com/hamelln/typescript-textbook/assets/39308313/82be080e-a9f7-46b9-ba53-59908a822740)
+![object-literal](https://github.com/hamelln/typescript-textbook/assets/39308313/82479a2b-cae1-4ad8-9c9e-51e7019c7332)
 
 ### 브랜딩 기법
 
 잉여 속성이 들어오는 걸 원천 차단하고 싶다면 **브랜딩 기법**을 활용한다.  
 
-![type-compatibility-3](https://github.com/hamelln/typescript-textbook/assets/39308313/3bef8c15-fec4-432a-b933-5c330b4b7bde)
+![branding-type](https://github.com/hamelln/typescript-textbook/assets/39308313/5a0339b3-b04e-4f1a-8e3a-f06e7ebbf101)
 
 # 타입 상속
 
