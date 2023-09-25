@@ -164,6 +164,17 @@ TS 4.9에 도입된 문법 satisfies는 특이하면서도 강력하다. 찬찬�
 
 ### 타입 업캐스팅
 
+> “타입 추론을 유도하거나, 내부 값이 인터페이스와 일치하는지 확인을 요구하는 상황에서 표현식을 static한 타입으로 변경해야 하는 상황이 있곤 합니다. 이럴 때 as 연산자를 쓰기도 하지만, as는 다운 캐스팅도 허용하는 위험성이 있습니다. 
+**'타입이 호환되는지만' 판단하는 연산자**가 있으면 좋겠더군요. 그런 연산자를 만들어서 as 대신 쓰는 게 좋겠어요.
+이러한 처리는 아래와 같은 함수로도 구현할 수 있지만, 런타임에 영향을 끼치는 건 싫으니 언어 내부적으로 심으면 좋을 듯합니다.”
+- magnushiie - 
+
+```
+function asType<T>(value: T) {
+  return value;
+};
+```
+
 정적 타입 언어에는 업캐스팅과 다운캐스팅이란 개념이 있다.  
 업캐스팅: 속성을 줄이는 것. 예컨대 속성 10개를 가진 자식 클래스 B를 속성 2개 가진 부모 클래스 A로 선언하는 것.  
 다운캐스팅: 본연의 타입으로 '복구'시키는 것. 업캐스팅을 했다가 B의 고유 속성을 쓰려면 B 타입으로 돌려놔야 한다.  
@@ -206,11 +217,14 @@ Typing해서 타입 명시하는 게 최고인가? 그렇지만도 않다.
 - 조현영(2023.08). **타입스크립트 교과서.** 길벗
 - [TypeScript 공식](https://www.typescriptlang.org/)
 - [김병묵(2022.10). TypeScript 타입 시스템 뜯어보기: 타입 호환성. toss tech](https://toss.tech/article/typescript-type-compatibility)
+- [최수범(2022.09). satisfies: 안전한 업캐스팅을 통해 더 안전한 코드작성을 도와주는 새로운 키워드. AB180](https://engineering.ab180.co/stories/satisfies-safe-upcasting)
 - [박서진(2021.05). Template Literal Types로 타입 안전하게 코딩하기. toss tech](https://toss.tech/article/template-literal-types)
 - [Daniel Bartholomae(2021.01). 10 bad TypeScript habits to break this year](https://ui.toast.com/weekly-pick/ko_20210217)
 - [캡틴판교. 제네릭 제약 조건.](https://joshua1988.github.io/ts/guide/generics.html#%EC%A0%9C%EB%84%A4%EB%A6%AD%EC%9D%98-%ED%95%9C-%EC%A4%84-%EC%A0%95%EC%9D%98%EC%99%80-%EC%98%88%EC%8B%9C)
 - [멍개(2022.07). [typescript] 트리쉐이킹 - enum을 써야하는가?](https://blog.naver.com/pjt3591oo/222817775732)
 - [나를 찾는 아이(2023.07). [typescript] optional 속성에 undefined를 할당할수 있을까?](https://trend21c.tistory.com/2332)
+- [RyanCavanaugh(2022.02). "satisfies" operator to ensure an expression matches some type (feedback reset) #47920](https://github.com/microsoft/TypeScript/issues/47920)
+- [magnushiie(2016.03). Operator to ensure an expression is contextually typed by, and satisfies, some type #7481](https://github.com/microsoft/TypeScript/issues/7481)
 - [Jesse Hallett(2023.05). When to use never and unknown in TypeScript](https://blog.logrocket.com/when-to-use-never-unknown-typescript/)
 - [Marius Schulz(2019.05). The unknown Type in TypeScript](https://mariusschulz.com/blog/the-unknown-type-in-typescript)
 - [Antonello Zanini(2022.08). How to extend the Express Request object in TypeScript](https://blog.logrocket.com/extend-express-request-object-typescript/)
