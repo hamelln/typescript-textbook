@@ -5,6 +5,8 @@ function calculateCalorie({ carbohydrates, protein, fat }: Food) {
   return carbohydrates * 4 + protein * 4 + fat * 9;
 }
 
+const upcast = <Type>(implementation: Type): Type => implementation;
+
 const thighBurger: Burger = {
   carbohydrates: 60,
   protein: 28,
@@ -18,6 +20,11 @@ const filletBurger = {
   fat: 6.4,
   burgerBrand: "Mom's Touch",
 };
+
+const thigghBurger = thighBurger satisfies Food;
+console.log(thigghBurger.burgerBrand);
+
+const foodBurger = upcast<Food>(thighBurger);
 
 // ❓ 탄단지 속성이 있는데 버거 브랜드가 추가됐다고 칼로리 계산을 막는 게 합리적일까?
 // 📒 TypeScript는 덕 타이핑 지원: 추론된 타입이든, 확정된 타입이든, 최소 구조만 만족하면 통과
