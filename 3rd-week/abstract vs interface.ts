@@ -1,6 +1,5 @@
 /**
- * interface는 클래스 전용이 아니라서 private 같은 속성을 못 쓴다.
- * readonly같은 건 가능.
+ * 📝interface는 클래스 전용이 아니라서 private 등은 못 쓰고, readonly 등은 된다.
  */
 interface Movable {
   move(): void;
@@ -19,8 +18,8 @@ class Airplane implements Movable {
 }
 
 /**
- * 추상 클래스: 반만 완성한 클래스라고 생각하자.
- * 자식 클래스는 공통으로 제공된 요소를 이용하되 자체적인 구현을 추가해서 완성한다.
+ * 🤔추상 클래스: 기본 사양을 갖춘 템플릿이라 생각하자.
+ * 🤔자식 클래스는 공통으로 제공된 요소를 이용하되 자체적인 구현을 추가해서 완성한다.
  */
 abstract class Human {
   private name: string;
@@ -34,23 +33,30 @@ abstract class Human {
     this.internationalNumber = this.#findInternationalNumber(nation);
   }
   #findCountryCode(nation: string) {
-    return "KR";
+    return nation === "한국" ? "KR" : "US";
   }
   #findInternationalNumber(nation: string) {
-    return "82";
+    return nation === "한국" ? "82" : "1";
   }
   // 인사법은 자식 클래스에서 작성한다.
   abstract greet(): void;
 }
 
-class Member extends Human {
-  id: string;
+class Korean extends Human {
   constructor(name: string, nation: string) {
     super(name, nation);
-    this.id = "id";
   }
 
   greet(): void {
     console.log("안녕하세요.");
+  }
+}
+
+class American extends Human {
+  constructor(name: string, nation: string) {
+    super(name, nation);
+  }
+  greet(): void {
+    console.log("Hello!");
   }
 }
