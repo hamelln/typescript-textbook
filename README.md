@@ -100,9 +100,10 @@ API 타입을 지정할 때 유용하다.
 
 # 4. 타입 호환성
 
-타이핑은 여러 종류가 있는데 지금은 두 가지만 보겠다.  
+타이핑 방식은 여러 가지가 있고, 언어마다 타이핑 방식이 다르다. 지금은 두 가지만 보겠다.  
 ### 1️⃣ 명목적 타이핑(Nominal Typing)
 
+Java 등의 언어가 사용하는 방식.
 ![1-nominal-typing](https://github.com/hamelln/typescript-textbook/assets/39308313/21d66e5f-a325-45d1-aa04-86c0597ba60b)
 
 ### 2️⃣ 구조적 타이핑(Structure Typing)  
