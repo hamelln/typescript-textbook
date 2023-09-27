@@ -1,8 +1,9 @@
 # satisfies
 
-TypeScript 4.9에 추가된 새로운 문법으로서, satisfies는 상당히 흥미로운 문법이다.  
-
-satisfies는 어떤 이유로 제안됐을까? 이를 이해하기 위해 Type upcasting을 먼저 알아보자.
+satisfies는 TypeScript 4.9에 추가된 흥미로운 문법이다.  
+어떤 이유로 제안됐을까?  
+최초에는 '타입의 호환성이 적절한지 체크하기만 하는 연산자가 있으면 좋겠다'는 의도였지만, 제안서의 stage가 진행됨에 따라 여러 시나리오가 참작됐다.  
+우선 Type upcasting을 알아보자.
 
 ![satisfies-1](https://github.com/hamelln/typescript-textbook/assets/39308313/1b4926cf-430b-4d8d-a0be-ca1b12924a0b)
 
