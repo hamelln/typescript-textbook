@@ -158,6 +158,83 @@ C#, Java 같은 정적 타입 언어들은 다양한 타입이 들어와도 유�
 제네릭은 아무 때나 쓰는 게 아니라 재사용과 추상화가 필요하고, 코드가 조금 복잡한 경우에 쓰는 게 좋다.  
 단순한 경우에는 제네릭 없이 타입만 명시한다.
 
+### 타입 제한
+
+![constraint-1](https://github.com/hamelln/typescript-textbook/assets/39308313/acc754c2-57fa-4edf-a8be-188cf3659088)
+
+### 조건부 타입과 타입 제한
+
+![constraint-2](https://github.com/hamelln/typescript-textbook/assets/39308313/bf794727-edb7-4fe0-a6c8-58b9a24091f1)
+
+### 에러 처리와 제네릭
+
+에러는 수많은 원인과 속성이 있기 때문에 타입 단언을 못하고 unknown으로 추론한다.  
+대비 가능한 에러 케이스는 작성해두는 게 좋은데, 각 케이스를 전부 개별적으로 작성하는 건 고된 일이다.  
+이럴 때 제네릭을 쓰면 유용하다. 아래 예제 코드를 조금 훑어보면 작성하는 측에서 ErrorName만 신경쓰면 됨을 알 수 있다.  
+그 ErrorName마저도 유니온으로 지정돼있기 때문에 타입스크립트에서 자동 완성을 제공해준다.  
+
+![image](https://github.com/hamelln/typescript-textbook/assets/39308313/216b302f-5f58-409a-a6cc-9a80b65b6bb0)
+
+### const parameters
+
+TypeScript 5.0에 추가된 기능. 예제 코드를 보자.
+
+![generic-1](https://github.com/hamelln/typescript-textbook/assets/39308313/c309e2c3-c607-4d7c-8ce4-d30be0da4663)
+# overloading
+
+![overloading-1](https://github.com/hamelln/typescript-textbook/assets/39308313/b7af46b7-7de4-45ff-8c9c-995aeeef0865)
+![overloading-2](https://github.com/hamelln/typescript-textbook/assets/39308313/7d8c74eb-df63-4128-be33-24a8deaadfd1)
+
+쓸 일이 많지는 않을 듯하다.  
+
+# parameters & arguments
+
+![params-args](https://github.com/hamelln/typescript-textbook/assets/39308313/1311448b-63d4-4072-91b2-acaaacbd9d95)
+
+# private vs \#
+
+![private-privateField](https://github.com/hamelln/typescript-textbook/assets/39308313/7d5bb7df-4f24-4d33-9eef-cf9e188030a8)
+
+# interface vs abstract class
+
+![abstract-interface](https://github.com/hamelln/typescript-textbook/assets/39308313/e82d493d-285d-45b2-939c-0f26d416074e)
+
+흔히들 라이브러리 vs 프레임워크를 논할 때 제한과 자유도를 언급한다.  
+
+라이브러리: 이것저것 혼합해서 자유로운 구현이 가능하고 하나의 절대적 규칙이 없음.  
+프레임워크: 템플릿대로 하는 강제성이 있는 대신 익숙해지면 편리.  
+
+추상 클래스를 프레임워크로, 인터페이스를 라이브러리라고 생각해보자.  
+
+추상 클래스: 완성된 기능과 템플릿이 있고 하나만 상속하기 때문에 구현 클래스에서 해야할 것이 다들 비슷하다.  
+인터페이스: 여러 인터페이스가 섞일 수 있고 구현하는 대상이 제각각일 수 있다.  
+
+# recursive type
+
+![recursive-type](https://github.com/hamelln/typescript-textbook/assets/39308313/86a75181-9aac-4cd0-8848-0088b0a18316)
+
+# infer keyword
+
+TypeScript는 자동 추론 기능이 있다.  
+하지만 자동 추론만으로는 부족한 면이 있는데, 특정한 부분에서 타입을 추론해보라고 명시할 수 있다.  
+
+![infer](https://github.com/hamelln/typescript-textbook/assets/39308313/101cb851-4645-467f-bd4c-9a3217708220)
+
+infer는 extends와 같이 써야만 하고, 따로 쓸 수는 없다.
+
+# type narrowing(타입 좁히기)
+
+타입 좁히기는 중요한데, 요청해서 가져오거나 이벤트 분기를 처리할 땐 여러 가지 경우의 수가 있기 때문이다.  
+
+![image](https://github.com/hamelln/typescript-textbook/assets/39308313/5832d12e-af5f-4f4e-906e-f33d26f4eb87)
+![type-narrowing-1](https://github.com/hamelln/typescript-textbook/assets/39308313/5f59a381-4b68-4130-8670-6d77550b9275)
+
+# 참조
+- 조현영(2023.08). **타입스크립트 교과서.** 길벗
+- [TypeScript 공식](https://www.typescriptlang.org/)
+- [Dmitri Pavlutin(2023.03). TypeScript Function Overloading](https://dmitripavlutin.com/typescript-function-overloading/)
+
+
 # satisfies
 
 TS 4.9에 도입된 문법 satisfies는 특이하면서도 강력한데, 조금 길어서 별도의 문서로 분리한다.  
