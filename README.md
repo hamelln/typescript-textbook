@@ -144,11 +144,11 @@ TypeScript는 객체 리터럴을 $\textcolor{#3498DB}{\textsf{fresh한 객체}}
 
 ![branding-type](https://github.com/hamelln/typescript-textbook/assets/39308313/5a0339b3-b04e-4f1a-8e3a-f06e7ebbf101)
 
-# 타입 상속
+# 9. 타입 상속
 
 ![type-extends](https://github.com/hamelln/typescript-textbook/assets/39308313/a681f7b3-4787-47f4-9b3b-675e5f213fa8)
 
-# 제네릭
+# 10. 제네릭
 
 소프트웨어 개발자의 최대 관심사 중 하나는 "재사용성"이다.  
 C#, Java 같은 정적 타입 언어들은 다양한 타입이 들어와도 유연하게 실행할 수 있도록 제네릭을 지원한다.  
@@ -180,22 +180,22 @@ C#, Java 같은 정적 타입 언어들은 다양한 타입이 들어와도 유�
 TypeScript 5.0에 추가된 기능. 예제 코드를 보자.
 
 ![generic-1](https://github.com/hamelln/typescript-textbook/assets/39308313/c309e2c3-c607-4d7c-8ce4-d30be0da4663)
-# overloading
+# 11. overloading
 
 ![overloading-1](https://github.com/hamelln/typescript-textbook/assets/39308313/b7af46b7-7de4-45ff-8c9c-995aeeef0865)
 ![overloading-2](https://github.com/hamelln/typescript-textbook/assets/39308313/7d8c74eb-df63-4128-be33-24a8deaadfd1)
 
 쓸 일이 많지는 않을 듯하다.  
 
-# parameters & arguments
+# 12. parameters & arguments
 
 ![params-args](https://github.com/hamelln/typescript-textbook/assets/39308313/1311448b-63d4-4072-91b2-acaaacbd9d95)
 
-# private vs \#
+# 13. private vs \#
 
 ![private-privateField](https://github.com/hamelln/typescript-textbook/assets/39308313/7d5bb7df-4f24-4d33-9eef-cf9e188030a8)
 
-# interface vs abstract class
+# 14. interface vs abstract class
 
 ![abstract-interface](https://github.com/hamelln/typescript-textbook/assets/39308313/e82d493d-285d-45b2-939c-0f26d416074e)
 
@@ -209,11 +209,11 @@ TypeScript 5.0에 추가된 기능. 예제 코드를 보자.
 추상 클래스: 완성된 기능과 템플릿이 있고 하나만 상속하기 때문에 구현 클래스에서 해야할 것이 다들 비슷하다.  
 인터페이스: 여러 인터페이스가 섞일 수 있고 구현하는 대상이 제각각일 수 있다.  
 
-# recursive type
+# 15. recursive type
 
 ![recursive-type](https://github.com/hamelln/typescript-textbook/assets/39308313/86a75181-9aac-4cd0-8848-0088b0a18316)
 
-# infer keyword
+# 16. infer keyword
 
 TypeScript는 자동 추론 기능이 있다.  
 하지만 자동 추론만으로는 부족한 면이 있는데, 특정한 부분에서 타입을 추론해보라고 명시할 수 있다.  
@@ -222,20 +222,20 @@ TypeScript는 자동 추론 기능이 있다.
 
 infer는 extends와 같이 써야만 하고, 따로 쓸 수는 없다.
 
-# type narrowing(타입 좁히기)
+# 17. type narrowing(타입 좁히기)
 
 타입 좁히기는 중요한데, 요청해서 가져오거나 이벤트 분기를 처리할 땐 여러 가지 경우의 수가 있기 때문이다.  
 
 ![image](https://github.com/hamelln/typescript-textbook/assets/39308313/5832d12e-af5f-4f4e-906e-f33d26f4eb87)
 ![type-narrowing-1](https://github.com/hamelln/typescript-textbook/assets/39308313/5f59a381-4b68-4130-8670-6d77550b9275)
 
-# template literal
+# 18. template literal
 
 ![template-literal-1](https://github.com/hamelln/typescript-textbook/assets/39308313/7808433d-6a84-44cf-a134-1ef2195eec2e)
 
 ![template-literal-2](https://github.com/hamelln/typescript-textbook/assets/39308313/a15cd397-2884-4458-a294-5ac6d3bd5026)
 
-# satisfies
+# 19. satisfies
 
 TS 4.9에 도입된 문법 satisfies는 특이하면서도 강력한데, 조금 길어서 별도의 문서로 분리한다.  
 https://github.com/hamelln/typescript-textbook/blob/main/4th-week/SATISFIES.md
