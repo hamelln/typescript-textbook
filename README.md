@@ -76,7 +76,7 @@ const enum은 메모리에 안 남지만, TypeScript 문서에서는 reverse-map
 ✅ $\textcolor{#ffffffc7}{\textsf{할당한다면 string만 허용하자.}}$  
 ❌ $\textcolor{#ed322199}{\textsf{undefined을 할당해도 OK}}$  
 
-`tsconfig.ts`에서 `exactOptionalPropertyTypes: true`로 설정하면 고의로 undefined를 할당하는 게 금지된다.
+`tsconfig.ts`에서 `exactOptionalPropertyTypes: true`로 설정하면 고의로 undefined를 할당하는 걸 금지한다.  
 
 ## 인터페이스 재선언
 
@@ -120,7 +120,7 @@ Q) **“오리란 무엇인가?”**
 
 ![rp0g39w789nqe8uzge8p](https://github.com/hamelln/typescript-textbook/assets/39308313/1b280fe5-0bc6-4c4c-bd15-2b34dd8baeaa)
 
-그러면 위의 사진은 진짜 오리라고 공인된다.  
+그러면 위의 사진은 현실 오리라고 공인된다.  
 이런 논리로 타입을 맞추는 게 구조적 타이핑이다.  
 코드로 확인해보자.  
 
