@@ -160,56 +160,8 @@ C#, Java 같은 정적 타입 언어들은 다양한 타입이 들어와도 유�
 
 # satisfies
 
-TS 4.9에 도입된 문법 satisfies는 특이하면서도 강력하다. 찬찬히 훑어보자.
-
-> “타입은 구체적일수록 좋을까?”
-
-답은 "항상 그렇진 않다."  
-
-![upcasting-1](https://github.com/hamelln/typescript-textbook/assets/39308313/efed9668-7a73-4821-a346-25aad731b413)
-
-### 타입 upcasting, downcasting
-
-업캐스팅: 속성을 줄이는 것. 예컨대 속성 10개를 가진 자식 클래스 B를 속성 2개 가진 부모 클래스 A로 선언하는 것.  
-다운캐스팅: 본연의 타입으로 '복구'시키는 것. 업캐스팅을 했다가 B의 고유 속성을 쓰려면 B 타입으로 돌려놔야 한다.  
-
-> “타입을 추론해야 하거나, 내부 값이 인터페이스와 일치하는지 확인을 요구하는 상황에서 표현식을 static 타입으로 해야 할 때가 있습니다.
-그럴 때 as를 쓰기도 하지만, as는 다운 캐스팅될 위험성이 있습니다.  
-**'타입이 호환되는지만' 판단하는 연산자**가 있으면 좋겠어요. 그런 연산자를 만들어서 as 대신 쓰는 게 좋겠어요.
-이러한 처리는 아래와 같은 함수로도 구현할 수 있지만, 런타임에 영향을 끼치는 건 싫으니 언어 내부적으로 심으면 좋을 듯합니다.”  
--magnushiie.- 
-
-```
-function asType<T>(value: T) {
-  return value;
-};
-```
-
-> “as로 해결하는 건 문제가 많다.”
-
-![upcasting-2](https://github.com/hamelln/typescript-textbook/assets/39308313/23a20001-995e-46ed-9b6b-7290b49b69d5)
-
-as는 타입을 체크하는 게 아니라 '이 타입이라고 간주해!'라고 강제할 뿐이라서 위험하다.  
-
-### 실시간 다운캐스팅
-
-Typing은 생각보다 만고불변의 진리가 아니다.
-
-![satisfies-1](https://github.com/hamelln/typescript-textbook/assets/39308313/0ad0145c-329c-4e76-a502-85267611e35c)
-
-### 객체의 속성 제한
-
-![satisfies-2](https://github.com/hamelln/typescript-textbook/assets/39308313/1f7d74be-2eb8-4692-9757-913ea486d68d)
-
-### 간편한 업캐스팅
-
-![satisfies-3](https://github.com/hamelln/typescript-textbook/assets/39308313/a8065376-40eb-4c61-be74-e01c015ccae1)
-
-요약하자면 아래와 같다.
-
-- 업캐스팅이 필요한 상황에서 satisfies를 쓰면 간단하게 구현
-- 실제로 있는 속성에만 접근 가능
-- 속성의 타입은 실제 값에 맞춰서 다운 캐스팅
+TS 4.9에 도입된 문법 satisfies는 특이하면서도 강력한데, 조금 길어서 별도의 문서로 분리한다.  
+https://github.com/hamelln/typescript-textbook/blob/main/4th-week/SATISFIES.md
 
 # 참조
 
