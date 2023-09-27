@@ -4,7 +4,7 @@ $\textcolor{#ffffffc7}{\textsf{}}$
 
 1️⃣ 객체: 보통은 객체, 배열, 클래스, 함수 등 원시 타입이 아닌 것들을 전부 말한다.  
 2️⃣ 리터럴 타입: 값 그 자체가 타입. const n = 1의 타입은 number가 아닌, 1이다.  
-타이핑: 식별자에 타입을 명시하는 것. const n:number = 1의 타입은 number이다.  
+3️⃣ 타이핑: 식별자에 타입을 명시하는 것. const n:number = 1의 타입은 number이다.  
 
 # 1. 타이핑이란?
 
