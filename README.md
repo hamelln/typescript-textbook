@@ -180,7 +180,8 @@ C#, Java 같은 정적 타입 언어들은 다양한 타입이 들어와도 유�
 
 TypeScript 5.0에 추가된 기능. 예제 코드를 보자.
 
-![generic-1](https://github.com/hamelln/typescript-textbook/assets/39308313/c309e2c3-c607-4d7c-8ce4-d30be0da4663)
+![const-parameters](https://github.com/hamelln/typescript-textbook/assets/39308313/9fffcbba-bc3f-4303-af57-73e02d440202)
+
 # 7. overloading
 
 ![overloading-1](https://github.com/hamelln/typescript-textbook/assets/39308313/b7af46b7-7de4-45ff-8c9c-995aeeef0865)
