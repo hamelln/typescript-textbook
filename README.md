@@ -229,12 +229,6 @@ infer는 extends와 같이 써야만 하고, 따로 쓸 수는 없다.
 ![image](https://github.com/hamelln/typescript-textbook/assets/39308313/5832d12e-af5f-4f4e-906e-f33d26f4eb87)
 ![type-narrowing-1](https://github.com/hamelln/typescript-textbook/assets/39308313/5f59a381-4b68-4130-8670-6d77550b9275)
 
-# 참조
-- 조현영(2023.08). **타입스크립트 교과서.** 길벗
-- [TypeScript 공식](https://www.typescriptlang.org/)
-- [Dmitri Pavlutin(2023.03). TypeScript Function Overloading](https://dmitripavlutin.com/typescript-function-overloading/)
-
-
 # satisfies
 
 TS 4.9에 도입된 문법 satisfies는 특이하면서도 강력한데, 조금 길어서 별도의 문서로 분리한다.  
