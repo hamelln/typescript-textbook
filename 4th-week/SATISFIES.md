@@ -2,7 +2,17 @@
 
 TypeScript 4.9에 추가된 새로운 문법으로서, satisfies는 상당히 흥미로운 문법이다.  
 
-satisfies는 어떤 이유로 제안됐을까? 이를 이해하기 위해 Type upcasting을 먼저 알아보자.
+satisfies는 어떤 이유로 제안됐을까? 
+
+> “타입을 추론해야 하거나, 내부 값이 인터페이스와 일치하는지 확인을 요구하는 상황에서 표현식을 static 타입으로 해야 할 때가 있습니다.
+그럴 때 as를 쓰기도 하지만, as는 다운 캐스팅이라는 위험성이 있습니다.  
+**'타입이 호환되는지만' 판단하는 연산자**가 있으면 좋겠어요. 그런 연산자를 만들어서 as 대신 쓰는 게 좋겠어요.
+이러한 처리는 아래와 같은 함수로도 구현할 수 있지만, 런타임에 영향을 끼치는 건 싫으니 언어 내부적으로 심으면 좋을 듯합니다.”  
+-magnushiie.-
+>
+> 
+
+이를 이해하기 위해 Type upcasting을 먼저 알아보자.
 
 ![satisfies-1](https://github.com/hamelln/typescript-textbook/assets/39308313/1b4926cf-430b-4d8d-a0be-ca1b12924a0b)
 
@@ -21,6 +31,14 @@ upcasting이라는 관점 말고도, typing에는 한계점이 몇 가지 존재
 satisfies는 이런 복잡한 업캐스팅, 다운캐스팅, 타입 체크 문제를 해소하는 문법이다. 위에 제시됐던 문제를 해결하는 모습을 보자.  
 
 ![satisfies-4](https://github.com/hamelln/typescript-textbook/assets/39308313/efb55e1c-8269-4c00-99a2-6c65dacccdad)
+
+다시금 요약하자면 아래와 같다.
+
+1. 타입체크에 기반한 safe-upcasting
+2. 타입체크에 기반한 safe-downcasting
+
+이는 객체 지향 프로그래밍 관점에서 다형성을 구현하기 더 편리하도록 돕는다.  
+이 외에도, 경우의 수 대비를 완벽하게 했는지, 타입 체크가 완벽한지 검증하는 용도 등으로도 쓸 수 있고 그 외에도 많은 가능성이 있다고 본다.  
 
 # 참조
 - [TypeScript 4.9](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html)
