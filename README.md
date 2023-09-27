@@ -240,7 +240,7 @@ infer는 extends와 같이 써야만 하고, 따로 쓸 수는 없다.
 # 15. satisfies
 
 satisfies는 TypeScript 4.9에 추가된 흥미로운 문법이다.  
-최초에는 '타입의 호환성이 적절한지 체크하기만 하는 연산자가 있으면 좋겠다'는 의도였지만, 제안서의 stage가 진행됨에 따라 여러 시나리오가 참작됐다.  
+최초에는 '타입의 호환성이 적절한지 체크하기만 하는 연산자가 있으면 좋겠다'는 의도였지만, stage가 진행되며 여러 시나리오가 참작됐다.  
 satisfies의 키워드 중 하나는 safe-upcasting이므로, upcasting이 무엇이고 왜 필요한지 간단하게 짚어보자.  
 
 ![satisfies-1](https://github.com/hamelln/typescript-textbook/assets/39308313/1b4926cf-430b-4d8d-a0be-ca1b12924a0b)
@@ -253,7 +253,7 @@ satisfies의 키워드 중 하나는 safe-upcasting이므로, upcasting이 무�
 
 그러면 typing만이 유일한 희망일까?  
 사실 typing에는 몇 가지 한계가 존재한다.  
-코드를 통해 satisfies가 typing의 어떤 한계점들을 보완하는지 보자.  
+코드를 통해 satisfies가 typing의 어떤 한계점들을 보완하고 유용한지 확인해보자.  
 
 ![satisfies-4](https://github.com/hamelln/typescript-textbook/assets/39308313/f02f5e26-0e15-44a4-a0c3-a41c20388c91)
 
@@ -264,15 +264,6 @@ satisfies의 키워드 중 하나는 safe-upcasting이므로, upcasting이 무�
 
 이는 덕 타이핑처럼, 다형성을 구현하기 더 편리하도록 돕는다.  
 이 외에도, 경우의 수 대비를 완벽하게 했는지, 타입 체크가 완벽한지 검증하는 용도 등으로도 쓸 수 있고 그 외에도 많은 가능성이 있다고 본다.  
-
-# 참조
-- [TypeScript 4.9](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html)
-- [magnushiie(2016.03). Operator to ensure an expression is contextually typed by, and satisfies, some type #7481](https://github.com/microsoft/TypeScript/issues/7481)
-- [RyanCavanaugh(2022.02). "satisfies" operator to ensure an expression matches some type (feedback reset) #47920](https://github.com/microsoft/TypeScript/issues/47920)
-- [최수범(2022.09). satisfies: 안전한 업캐스팅을 통해 더 안전한 코드작성을 도와주는 새로운 키워드(TypeScript 4.9)](https://engineering.ab180.co/stories/satisfies-safe-upcasting)
-- [ジェット(2023.01). [TypeScript] satisfies のつかいかた](https://www.pg-fl.jp/program/tips/ts_satisfies.htm)
-- [ジェット(2023.01). [TypeScript] オブジェクトの型をより厳密に判定する](https://www.pg-fl.jp/program/tips/ts_narrowobject.htm)
-
 
 # 참조
 
