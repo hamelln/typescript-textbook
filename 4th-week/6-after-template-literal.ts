@@ -1,6 +1,5 @@
-// 템플릿 리터럴은 대수적 타입(ADT)를 매우 편리하게 구현하도록 돕는다.
-// 대수적 타입: 타입을 대수적인 관점으로 보는 휴리스틱. 대수는 더하기와 곱하기 연산으로 모든 것을 한다.
-// 타입을 더하거나, 타입을 곱해서 새로운 타입을 만들어내 문제를 쉽게 해결하자는 아이디어.
+// 템플릿 리터럴: 대수적 타입(ADTs, 타입을 대수적으로 보는 휴리스틱)를 매우 편리하게 구현하도록 돕는다.
+// 타입을 연산해서 안전하고 쉽게 문제를 해결. -> 함수형 프로그래밍에 최적.
 
 // case 1: 이벤트 이름, 메소드 타입
 type EventNames = "click" | "doubleClick" | "mouseDown" | "mouseUp";
@@ -25,4 +24,36 @@ type MyElement = Handlers & {
 // case 2: 포커 카드
 type CardRank = 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | "J" | "Q" | "K" | "A";
 type CardSuit = "♥" | "♠" | "♣" | "◆";
-type Card = `${CardSuit}${CardRank}` | "JOKER"; // 단 세 줄만으로 모든 경우의 수를 만들어냈다!
+type Card = `${CardSuit}${CardRank}` | "JOKER";
+
+// Rust 같은 언어에서 ADT는 시스템적 기능으로서 지원: 무결성, 패턴 매칭 등 추가적인 보강.
+#[derive(Debug)]
+enum CardRank {
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Jack,
+    Queen,
+    King,
+    Ace
+}
+
+#[derive(Debug)]
+enum CardSuit {
+     Hearts = '♥' as isize, 
+     Spades = '♠' as isize, 
+     Clubs = '♣' as isize, 
+     Diamonds = '◆' as isize
+}
+
+#[derive(Debug)]
+enum Card {
+   Regular(CardSuit, CardRank),
+   Joker
+}
