@@ -47,6 +47,14 @@ infer는 extends와 같이 써야만 하고, 따로 쓸 수는 없다.
 ![image](https://github.com/hamelln/typescript-textbook/assets/39308313/5832d12e-af5f-4f4e-906e-f33d26f4eb87)
 ![type-narrowing-1](https://github.com/hamelln/typescript-textbook/assets/39308313/5f59a381-4b68-4130-8670-6d77550b9275)
 
+# enum과 reverse-mapping
+
+![enum](https://github.com/hamelln/typescript-textbook/assets/39308313/8c825f2c-ec2b-40fd-a62c-83ddb1711117)
+
+# generic 작명
+
+![generic-writing](https://github.com/hamelln/typescript-textbook/assets/39308313/fb8b6849-1297-4216-b3cc-31d9ceab2fc7)
+
 # 참조
 - 조현영(2023.08). **타입스크립트 교과서.** 길벗
 - [TypeScript 공식](https://www.typescriptlang.org/)
