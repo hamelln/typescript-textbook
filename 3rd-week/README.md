@@ -11,7 +11,7 @@
 
 # private vs \#
 
-![private-privateField](https://github.com/hamelln/typescript-textbook/assets/39308313/7d5bb7df-4f24-4d33-9eef-cf9e188030a8)
+![code](https://github.com/hamelln/typescript-textbook/assets/39308313/ef29570e-31ea-4ee0-a7c8-585dbf8b49ae)
 
 # interface vs abstract class
 
@@ -29,14 +29,14 @@
 
 # recursive type
 
-![recursive-type](https://github.com/hamelln/typescript-textbook/assets/39308313/86a75181-9aac-4cd0-8848-0088b0a18316)
+![recursive-type](https://github.com/hamelln/typescript-textbook/assets/39308313/5fc82404-f32a-4f18-b74a-3fa8b1abf9d5)
 
 # infer keyword
 
 TypeScript는 자동 추론 기능이 있다.  
 하지만 자동 추론만으로는 부족한 면이 있는데, 특정한 부분에서 타입을 추론해보라고 명시할 수 있다.  
 
-![infer](https://github.com/hamelln/typescript-textbook/assets/39308313/101cb851-4645-467f-bd4c-9a3217708220)
+![infer](https://github.com/hamelln/typescript-textbook/assets/39308313/8d4df6ff-ccdb-459f-8803-8321127bdb43)
 
 infer는 extends와 같이 써야만 하고, 따로 쓸 수는 없다.
 
