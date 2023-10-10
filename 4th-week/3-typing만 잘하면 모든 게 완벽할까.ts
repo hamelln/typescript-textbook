@@ -8,8 +8,8 @@ const palette1: Record<Colors, string | RGB> = {
   blue: [0, 0, 255],
 };
 
-palette1.red.map(0); // 🚫 Error(ts2339): 타입이 배열로 확정되지 않음. (string 가능성)
-palette1.green.toUpperCase(); // 🚫 Error(ts2339): 타입이 string으로 확정되지 않음 (배열 가능성)
+palette1.red.map(0); // ❌ Error(ts2339): 타입이 배열로 확정되지 않음. (string 가능성)
+palette1.green.toUpperCase(); // ❌ Error(ts2339): 타입이 string으로 확정되지 않음 (배열 가능성)
 
 // 해결 1️⃣: satisfies는 타입이 만족되는지 체크하고, 만족할 경우 다운캐스팅한다.
 const palette2 = {
@@ -56,7 +56,7 @@ const baseData1: Partial<Data> = {
 };
 
 const data1: Data = {
-  ...baseData1, // 🚫 Error(ts2322): 입력된 값이 타입과 정확히 부합하지 않는다. (baseTata의 타입은 옵셔널)
+  ...baseData1, // ❌ Error(ts2322): 입력된 값이 타입과 정확히 부합하지 않는다. (baseTata의 타입은 옵셔널)
   c: "foo",
   d: ["asd"],
 };

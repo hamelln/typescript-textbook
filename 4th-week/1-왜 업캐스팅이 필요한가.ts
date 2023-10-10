@@ -8,7 +8,7 @@ function changeBool() {
 
 changeBool();
 // ❗ 실제론 false 리터럴 타입으로 추론. false와 true는 '다른 타입'
-bool === true; // 🚫 ts2367 Error: 타입이 다른 것끼리는 비교하지 마시오.
+bool === true; // ❌ ts2367 Error: 타입이 다른 것끼리는 비교하지 마시오.
 
 // ❓ 이런 문제를 해결하려면 어떻게 해야 할까?
 // 😞 as로 boolean이라고 '단언'
