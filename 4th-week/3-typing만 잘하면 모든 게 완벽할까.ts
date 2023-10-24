@@ -11,6 +11,10 @@ const palette1: Record<Colors, string | RGB> = {
 palette1.red.map(0); // ❌ Error(ts2339): 타입이 배열로 확정되지 않음. (string 가능성)
 palette1.green.toUpperCase(); // ❌ Error(ts2339): 타입이 string으로 확정되지 않음 (배열 가능성)
 
+if (typeof palette1.green === "string") {
+  palette1.green.toUpperCase();
+}
+
 // 해결 1️⃣: satisfies는 타입이 만족되는지 체크하고, 만족할 경우 다운캐스팅한다.
 const palette2 = {
   red: [255, 0, 0],
@@ -107,23 +111,34 @@ const user = {
 } satisfies User as User; // ❌ Error(ts1360): major 속성을 입력하시오.
 
 // 문제 5️⃣: typing은 때때로 피곤하다.
-// '정상적인 환경'이라면 Navigator 타입에는 문제가 없다.
-const observer = {
-  navigator: window.navigator,
-};
-
-// 😱 하지만 Jest 같은 비브라우저 환경에선 BOM 속성을 Mocking해야 할 때도 있다.
-// 이런 상황이 올 때마다 upcasting 함수를 작성하거나, mocking하는 등의 방법을 써야만 하나?
-
-// 해결 5️⃣: satisfies + as = safe upcasting
-interface SmallNavigator {
-  language?: string;
-  userAgent?: string;
+interface Gamer {
+  id: string;
+  name: string;
+  nickname: string;
+  joinDate: string;
+  friends: string[];
+  gameMoney: number;
+  cash: number;
+  totalUsedGameMoney: number;
 }
 
-// 💡 필요한 속성만 mocking
-// Navigator는 language: string, userAgent:string을 만족한다.
-// 안 쓰는 속성들까지 mocking하는 대신 as를 써서 업캐스팅하고 끝낸다.
-const observer = {
-  navigator: window.navigator satisfies SmallNavigator as SmallNavigator,
+const gamer281: Gamer = {
+  id: "1232-as23",
+  name: "이태현",
+  nickname: "hamelln",
+  joinDate: "2023-03-23",
+  friends: ["id1", "id2", "id3"],
+  gameMoney: 203022,
+  cash: 20000,
+  totalUsedGameMoney: 2202200,
+  // ... 그 외 등등.
 };
+
+type EventParticipants = { id: string; name: string; nickname: string };
+
+function personalize(gamer: Gamer) {
+  return gamer satisfies EventParticipants as EventParticipants;
+}
+
+const person = personalize(gamer281);
+person.cash;
